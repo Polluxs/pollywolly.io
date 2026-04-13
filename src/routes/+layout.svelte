@@ -4,6 +4,7 @@
 </script>
 
 <svelte:head>
+	<link rel="icon" href="/favicon.svg" />
 	<title>Thomas Dorissen</title>
 	<meta name="description" content="Building stuff with data. Scraping, SEO, infra. Currently building databakkes.be and facetracker.io." />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />

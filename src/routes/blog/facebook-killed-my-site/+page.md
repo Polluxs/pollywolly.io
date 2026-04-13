@@ -13,6 +13,11 @@ date: 2026-04-13
 <meta property="og:title" content="Facebook killed my site" />
 <meta property="og:description" content="How meta-externalagent DDoSed my 1.9M page SvelteKit site and what I did about it." />
 <meta property="og:type" content="article" />
+<meta property="og:image" content="https://pollywolly.io/og/facebook-killed-my-site" />
+<meta property="og:image:type" content="image/svg+xml" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://pollywolly.io/og/facebook-killed-my-site" />
 <meta property="article:published_time" content="2026-04-13" />
 <meta property="article:author" content="Thomas Dorissen" />
 <meta name="twitter:card" content="summary_large_image" />

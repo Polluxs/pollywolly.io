@@ -1,6 +1,23 @@
 <script lang="ts">
 	import './layout.css';
+	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
+	import { afterNavigate } from '$app/navigation';
+
 	let { children } = $props();
+
+	afterNavigate(() => {
+		if (browser) {
+			fetch('/api/track', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					page: $page.url.pathname,
+					referrer: document.referrer || ''
+				})
+			}).catch(() => {});
+		}
+	});
 </script>
 
 <svelte:head>

@@ -1,4 +1,5 @@
 import type { RequestHandler } from './$types';
+import geoip from 'geoip-lite';
 
 export const prerender = false;
 
@@ -10,12 +11,18 @@ export const POST: RequestHandler = async ({ request }) => {
 		|| 'unknown';
 
 	const ua = request.headers.get('user-agent') || '-';
-	const country = request.headers.get('cf-ipcountry')
-		|| request.headers.get('x-vercel-ip-country')
-		|| request.headers.get('x-country')
-		|| '??';
+	const geo = ip !== 'unknown' ? geoip.lookup(ip) : null;
 
-	console.log(JSON.stringify({ type: 'visit', page, referrer: referrer || 'direct', ip, country, ua }));
+	console.log(JSON.stringify({
+		type: 'visit',
+		message: `User visited ${page}`,
+		page,
+		referrer: referrer || 'direct',
+		ip,
+		country: geo?.country || '??',
+		city: geo?.city || '??',
+		ua
+	}));
 
 	return new Response(null, { status: 204 });
 };

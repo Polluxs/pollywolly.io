@@ -10,7 +10,12 @@
 </script>
 
 <svelte:head>
-	<title>Thomas Dorissen</title>
+	<title>Thomas Dorissen - building things with data</title>
+	<link rel="canonical" href="https://pollywolly.io" />
+	<meta property="og:title" content="Thomas Dorissen" />
+	<meta property="og:description" content="Building stuff with data. Scraping, SEO, infra. Currently building databakkes.be and facetracker.io." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://pollywolly.io" />
 </svelte:head>
 
 <div>

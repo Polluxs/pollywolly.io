@@ -7,6 +7,7 @@ date: 2026-04-13
 <svelte:head>
 
 <title>Facebook killed my site - debugging a Node.js OOM caused by meta-externalagent</title>
+<link rel="canonical" href="https://pollywolly.io/blog/facebook-killed-my-site" />
 <meta name="description" content="How Facebook's crawler took down my 1.9M page SvelteKit site with 2 req/s of SSR. Fixes for postgres pool exhaustion, slow slug redirects, OFFSET pagination, and code lookup caching." />
 <meta name="keywords" content="facebook crawler, meta-externalagent, Node.js OOM, SvelteKit SSR, postgres connection pool, keyset pagination, web performance" />
 <meta property="og:title" content="Facebook killed my site" />

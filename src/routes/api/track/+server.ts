@@ -15,7 +15,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		|| request.headers.get('x-country')
 		|| '??';
 
-	console.log(`[visit] ${page} | ref=${referrer || 'direct'} | ip=${ip} | country=${country} | ua=${ua}`);
+	console.log(JSON.stringify({ type: 'visit', page, referrer: referrer || 'direct', ip, country, ua }));
 
 	return new Response(null, { status: 204 });
 };

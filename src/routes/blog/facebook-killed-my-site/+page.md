@@ -80,7 +80,7 @@ GET /fr/0868985980 -> 301 (194ms, ua=meta-externalagent/1.1)
 
 `meta-externalagent/1.1`. never seen that user agent before. looked it up.
 
-it's not the normal facebook bot that generates link previews when someone shares your URL — that's `facebookexternalhit`. this is meta's **AI training crawler**. it scrapes your site to feed their models. just vacuuming up the entire web.
+it's not the normal facebook bot that generates link previews when someone shares your URL. that's `facebookexternalhit`. this is meta's **AI training crawler**. it scrapes your site to feed their models. just vacuuming up the entire web.
 
 and it decided my 1.9 million pages looked delicious.
 

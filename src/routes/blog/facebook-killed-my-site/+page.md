@@ -1,17 +1,17 @@
 ---
-title: facebook killed my site
-description: How Facebook's meta-externalagent crawler caused a Node.js OOM crash on my 1.9M page SvelteKit site. A debugging post-mortem with fixes for connection pool exhaustion, slow redirects, and OFFSET pagination.
+title: facebook (temporarily) bricked my site
+description: meta-externalagent crawled my 1.9M page site at 6 req/s. node OOM'd every 4 hours. I fixed 5 things. none of them mattered. node is single-threaded.
 date: 2026-04-13
 ---
 
 <svelte:head>
 
-<title>Facebook killed my site - debugging a Node.js OOM caused by meta-externalagent</title>
+<title>facebook (temporarily) bricked my site</title>
 <link rel="canonical" href="https://pollywolly.io/blog/facebook-killed-my-site" />
-<meta name="description" content="How Facebook's crawler took down my 1.9M page SvelteKit site with 2 req/s of SSR. Fixes for postgres pool exhaustion, slow slug redirects, OFFSET pagination, and code lookup caching." />
-<meta name="keywords" content="facebook crawler, meta-externalagent, Node.js OOM, SvelteKit SSR, postgres connection pool, keyset pagination, web performance" />
-<meta property="og:title" content="Facebook killed my site" />
-<meta property="og:description" content="How meta-externalagent DDoSed my 1.9M page SvelteKit site and what I did about it." />
+<meta name="description" content="meta-externalagent crawled my 1.9M page SvelteKit site at 6 req/s. node OOM'd every 4 hours. I fixed 5 things. none of them mattered. node is single-threaded." />
+<meta name="keywords" content="meta-externalagent, Node.js event loop, SvelteKit SSR, single-threaded, postgres connection pool, keyset pagination, web performance" />
+<meta property="og:title" content="facebook (temporarily) bricked my site" />
+<meta property="og:description" content="meta's crawler hit my site at 6 req/s. node OOM'd. I fixed 5 things. none of them mattered." />
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://pollywolly.io/og/facebook-killed-my-site" />
 <meta property="og:image:type" content="image/svg+xml" />
@@ -21,22 +21,22 @@ date: 2026-04-13
 <meta property="article:published_time" content="2026-04-13" />
 <meta property="article:author" content="Thomas Dorissen" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Facebook killed my site" />
-<meta name="twitter:description" content="How meta-externalagent DDoSed my 1.9M page SvelteKit site at 2 req/s. A sunday debugging story." />
+<meta name="twitter:title" content="facebook (temporarily) bricked my site" />
+<meta name="twitter:description" content="meta's crawler hit my site at 6 req/s. node OOM'd. a sunday debugging story." />
 {@html `<script type="application/ld+json">${JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Facebook killed my site - debugging a Node.js OOM caused by meta-externalagent",
-  "description": "How Facebook's crawler took down a 1.9M page SvelteKit site with 2 req/s of SSR requests.",
+  "headline": "facebook (temporarily) bricked my site",
+  "description": "meta-externalagent crawled a 1.9M page SvelteKit site at 6 req/s. node OOM'd. a debugging post-mortem about event loops and why node is single-threaded.",
   "datePublished": "2026-04-13",
   "author": { "@type": "Person", "name": "Thomas Dorissen" },
   "publisher": { "@type": "Person", "name": "Thomas Dorissen" }
 })}</script>`}
 </svelte:head>
 
-# facebook killed my site
+# facebook (temporarily) bricked my site
 
-*how I spent a sunday debugging an OOM and found zuckerberg at the other end*
+*6 req/s shouldn't kill a 48GB server with 12 cores. unless you run javascript of course.*
 
 ---
 
@@ -78,9 +78,15 @@ GET /fr/0599815237 -> 301 (825ms, ua=meta-externalagent/1.1)
 GET /fr/0868985980 -> 301 (194ms, ua=meta-externalagent/1.1)
 ```
 
-> **every. single. request. facebook.**
+`meta-externalagent/1.1`. never seen that user agent before. looked it up.
 
-`meta-externalagent` - crawling all 3 language versions simultaneously. **~6 requests per second. 24/7.**
+it's not the normal facebook bot that generates link previews when someone shares your URL — that's `facebookexternalhit`. this is meta's **AI training crawler**. it scrapes your site to feed their models. just vacuuming up the entire web.
+
+and it decided my 1.9 million pages looked delicious.
+
+> **every. single. request. meta's AI scraper.**
+
+crawling all 3 language versions simultaneously. **~6 requests per second. 24/7.**
 
 and look - 6 req/s is not crazy. this is a 12 core / 48GB machine. shared between postgres, meilisearch, and SvelteKit. it should eat 6 req/s for breakfast. the problem wasn't the traffic. it was the code.
 
@@ -140,15 +146,19 @@ the sync process ran a **massive aggregation on every deploy**. competing with b
 
 ~~**sync only at midnight** - a 4-minute aggregation query was running on every deploy. competing with bot traffic.~~
 
-all good improvements. none of them fixed it.
+all good improvements. shipped them all. still OOM'd.
 
-the real problem: **[node.js is single-threaded](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick)**. SSR rendering 1842 lines of svelte takes ~600ms of CPU. while that's happening, the [event loop](https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop) is blocked. every other request just sits there waiting. at 6 req/s, they pile up. `total_db` climbs from 11ms to 14 seconds - not because postgres is slow, but because node hasn't gotten around to reading the response yet.
+**[node.js is single-threaded](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick)**. SSR rendering 1842 lines of svelte takes ~600ms of CPU. while that's happening, the [event loop](https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop) is blocked. every other request just sits there waiting. at 6 req/s, they pile up. `total_db` climbs from 11ms to 14 seconds - not because postgres is slow, but because node hasn't gotten around to reading the response yet.
+
+12 cores. 48GB of RAM. doesn't matter. node uses one core. the other 11 just watch.
+
+honestly ~600ms of CPU for one page surprised me. 1842 lines of svelte is not nothing, but it's not insane either. maybe I'm doing something wrong in how I structure the components. or maybe sveltekit SSR is just heavier than you'd expect for larger pages. if anyone has insight here - hit me up.
 
 the fix was stupid simple: **3 replicas**. three node processes, three event loops, three CPUs doing SSR in parallel.
 
 could have also dropped SSR entirely. but I need it for SEO - the whole point is google indexing these pages. (whenever google decides to actually visit my site.)
 
-so: 3 replicas. done.
+scaling node is easy. you just need more nodes.
 
 ---
 
@@ -166,11 +176,11 @@ total_db = 11ms       total = 648ms      stable
 
 ## tldr
 
-javascript slow? add more servers.
+node is single-threaded. the fix was more nodes.
 
 ---
 
-<p style="text-align: center; font-size: 1.25rem;">thanks for the free load test, zuck.</p>
+<p style="text-align: center; font-size: 1.25rem;">thanks for the free load test, zuck. all the bugs were mine.</p>
 
 <img src="/zuck.png" alt="zuckerberg as a robot spamming databakkes.be" style="max-width: 350px; margin: 0 auto;" />
 
@@ -178,6 +188,6 @@ javascript slow? add more servers.
 
 *[databakkes.be](https://databakkes.be) - free Belgian company lookup. 1.9M companies. now with 100ms redirects.*
 
-*if you're here because meta-externalagent is destroying your server: you're not alone. check your logs. move your redirects up. cache your static data. and maybe send zuck the hosting bill. hope you're not on vercel.*
+*if you're here because meta-externalagent is hammering your server: you're not alone. check your logs. move your redirects up. cache your static data. and if you're doing SSR on node, remember it's single-threaded. hope you're not on vercel.*
 
 *hit me up on [X (Twitter)](https://x.com/DorissenThomas) if you have the same problem.*

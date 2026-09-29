@@ -36,7 +36,7 @@ date: 2026-04-13
 
 # facebook (temporarily) bricked my site
 
-*6 req/s shouldn't kill a 48GB server with 12 cores. unless you run javascript of course.*
+_6 req/s shouldn't kill a 48GB server with 12 cores. unless you run javascript of course._
 
 ---
 
@@ -186,8 +186,8 @@ node is single-threaded. the fix was more nodes.
 
 ---
 
-*[databakkes.be](https://databakkes.be) - free Belgian company lookup. 1.9M companies. now with 100ms redirects.*
+_[databakkes.be](https://databakkes.be) - free Belgian company lookup. 1.9M companies. now with 100ms redirects._
 
-*if you're here because meta-externalagent is hammering your server: you're not alone. check your logs. move your redirects up. cache your static data. and if you're doing SSR on node, remember it's single-threaded. hope you're not on vercel.*
+_if you're here because meta-externalagent is hammering your server: you're not alone. check your logs. move your redirects up. cache your static data. and if you're doing SSR on node, remember it's single-threaded. hope you're not on vercel._
 
-*hit me up on [X (Twitter)](https://x.com/DorissenThomas) if you have the same problem.*
+_hit me up on [X (Twitter)](https://x.com/DorissenThomas) if you have the same problem._

@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-	<rect width="32" height="32" rx="6" fill="#1e1f22"/>
-	<text x="16" y="24" font-family="sans-serif" font-size="22" font-weight="700" fill="#f2a860" text-anchor="middle">T</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+	<rect width="64" height="64" rx="14" fill="#0e1117"/>
+	<g transform="rotate(-6 32 32)">
+		<path d="M14 13h36v29l-9 9H14z" fill="#ffe14d"/>
+		<path d="M50 42h-9v9z" fill="#d9b92e"/>
+		<text x="31" y="43" font-family="'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif" font-size="30" font-weight="800" fill="#0e1117" text-anchor="middle">P</text>
+	</g>
 </svg>

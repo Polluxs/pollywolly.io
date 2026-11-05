@@ -101,62 +101,70 @@
 
 	const stack = [
 		{
-			name: 'Tijdscan',
-			what: 'Halve dag ter plaatse, plan met prijs binnen 48 uur',
-			value: '€750'
+			name: 'Weten waar uw uren naartoe gaan',
+			what: 'Tijdscan ter plaatse. Gratis, ook als u niet verder gaat.',
+			basis: '1,5 dag analist',
+			value: '€900'
 		},
 		{
-			name: 'Werkende software op dag 30',
-			what: 'Eén afgebakend proces, volledig gebouwd en in gebruik',
-			value: '€9.500'
+			name: 'Op dag 30 werkt uw team ermee',
+			what: 'Eén afgebakend proces, gebouwd en in gebruik',
+			basis: '20 dagen ontwikkelaar',
+			value: '€12.000'
 		},
 		{
-			name: 'Kijk-mee-link',
-			what: 'Testversie vanaf week 1, demo elke vrijdag',
-			value: 'inbegrepen'
+			name: 'Elke vrijdag ziet u waar het staat',
+			what: 'Projectleiding, testversie vanaf week 1',
+			basis: '4 dagen projectleider',
+			value: '€2.600'
 		},
 		{
-			name: 'Geen-data-verloren migratie',
-			what: 'Uw Excel en oude data overgezet, eerst een proefmigratie',
-			value: '€2.000'
+			name: 'Geen gegevens kwijt',
+			what: 'Excel en oude data overgezet, met proefmigratie',
+			basis: '5 dagen ontwikkelaar',
+			value: '€3.000'
 		},
 		{
-			name: 'Iedereen-kan-ermee opleiding',
-			what: "Sessie ter plaatse plus korte video's per taak",
+			name: 'Uw team kan ermee vanaf dag 1',
+			what: 'Opleiding ter plaatse voor uw team',
+			basis: '1 opleidingsdag',
 			value: '€1.000'
 		},
 		{
-			name: 'Directe lijn met mij',
-			what: 'Telefoon of WhatsApp, antwoord dezelfde werkdag, 3 maanden',
-			value: '€1.500'
+			name: 'Antwoord dezelfde werkdag',
+			what: 'Support, rechtstreeks naar mij',
+			basis: '3 maanden support',
+			value: '€600'
 		},
 		{
-			name: 'Zorgeloos online',
-			what: 'Hosting, back-ups, monitoring en herstelplan, 3 maanden',
-			value: '€450'
+			name: 'Het blijft draaien',
+			what: 'Hosting, back-ups en monitoring',
+			basis: '3 maanden hosting',
+			value: '€1.350'
 		},
 		{
-			name: 'Overdrachtsdossier',
-			what: 'Documentatie zodat elke ontwikkelaar kan overnemen',
-			value: '€1.500'
+			name: 'Niet afhankelijk van mij',
+			what: 'Overdrachtsdossier voor elke ontwikkelaar',
+			basis: '2 dagen ontwikkelaar',
+			value: '€1.200'
 		}
 	];
 
 	const guarantees = [
 		{
 			img: 'gereedschap',
-			title: 'Werkt het niet, dan werk ik door.',
-			body: 'Werkt de afgesproken versie niet op dag 30, dan werk ik gratis verder tot ze werkt. En de tweede helft betaalt u pas dan. Wat ik van u vraag: één vaste contactpersoon, 2 uur per week, en feedback binnen 2 werkdagen.'
+			title: 'Gratis tot het werkt.',
+			body: 'U betaalt pas als de afgesproken versie werkt. Werkt ze niet op dag 30, dan werk ik gratis verder tot ze werkt. Wat ik van u vraag: één vaste contactpersoon, 2 uur per week, en feedback binnen 2 werkdagen.'
 		},
 		{
 			img: 'sleutel',
-			title: 'Uw code, uw data. Altijd.',
-			body: 'Alles is van u vanaf dag 1. Wilt u stoppen of naar iemand anders, dan krijgt u alles mee, met documentatie.'
+			title: 'Uw data, uw code.',
+			body: 'Uw data blijven altijd van u. Elke versie die u aanvaardt, is van u, met de code erbij. Wilt u stoppen of naar iemand anders, dan krijgt u alles mee, met documentatie.'
 		},
 		{
 			img: 'bonnetje',
-			title: 'Geen verrassingen.',
-			body: 'Vaste prijs per maand. Een koppeling die onzeker is, testen we eerst. Kan ze niet, dan beslist u wat er gebeurt. Nooit een stille meerprijs.'
+			title: 'Geen verrassingen op uw factuur.',
+			body: 'Vaste prijs per maand, vooraf afgesproken. Is iets niet zoals afgesproken, dan lossen we dat eerst op. Bent u echt niet tevreden, dan is er geen factuur.'
 		}
 	];
 
@@ -189,7 +197,7 @@
 	const faq = [
 		{
 			q: 'Wat kost software op maat?',
-			a: 'De eerste werkende versie kost €9.500, stichtende klanten betalen €4.750. Na de gratis scan krijgt u binnen 48 uur een prijsvork voor uw eigen project.'
+			a: 'De eerste werkende versie kost €9.500, stichtende klanten betalen de eerste 3 maanden €4.750 per maand. Na de gratis scan krijgt u binnen 48 uur een prijsvork voor uw eigen project.'
 		},
 		{
 			q: 'Hoe lang duurt het?',
@@ -212,10 +220,13 @@
 			q: 'Moet ik mijn huidige pakket vervangen?',
 			a: 'Nee. Vaak bouwen we net het stuk dat uw pakket niet kan, en koppelen we het eraan. Uw boekhouding blijft waar ze is.'
 		},
-		{ q: 'Van wie is de code?', a: 'Van u, vanaf dag 1. Net als de data en de accounts.' },
+		{
+			q: 'Van wie is de code?',
+			a: 'Van u, zodra u een versie aanvaardt. Uw data en accounts zijn altijd van u.'
+		},
 		{
 			q: 'Wat als ik wil stoppen?',
-			a: 'Maandelijks opzegbaar. U krijgt alles mee, met documentatie zodat een andere ontwikkelaar kan overnemen.'
+			a: 'Maandelijks opzegbaar. U krijgt alles mee wat u aanvaard hebt, met documentatie zodat een andere ontwikkelaar kan overnemen.'
 		},
 		{
 			q: 'Wat moet ik zelf doen?',
@@ -382,7 +393,17 @@
 		</h2>
 		<div class="mt-12 grid gap-5 md:grid-cols-2">
 			<article class="card p-7 sm:p-9">
-				<h3 class="display text-2xl">Iemand extra aanwerven</h3>
+				<div class="flex items-start justify-between gap-4">
+					<h3 class="display text-2xl">Iemand extra aanwerven</h3>
+					<img
+						src="/illustrations/aanwerven.webp"
+						alt=""
+						width="636"
+						height="640"
+						loading="lazy"
+						class="-mt-2 w-20 shrink-0"
+					/>
+				</div>
 				<p class="mt-3 text-lg leading-relaxed text-ink-dim">
 					De meeste ondernemers zijn trots op hun team. Maar een extra medewerker vinden is moeilijk
 					en duur, en als het niet klikt nog duurder.
@@ -396,12 +417,12 @@
 				<div class="flex items-start justify-between gap-4">
 					<h3 class="display text-2xl">Meer tools en software</h3>
 					<img
-						src="/illustrations/past-niet.webp"
+						src="/illustrations/vorm-past-niet.webp"
 						alt=""
-						width="320"
-						height="320"
+						width="640"
+						height="546"
 						loading="lazy"
-						class="-mt-2 w-16 shrink-0"
+						class="-mt-2 w-24 shrink-0"
 					/>
 				</div>
 				<p class="mt-3 text-lg leading-relaxed text-ink-dim">
@@ -421,9 +442,7 @@
 				class="mx-auto w-full max-w-sm"
 			/>
 			<p class="display text-3xl leading-snug text-balance sm:text-4xl">
-				De betere vraag: waar gaat uw tijd nu eigenlijk naartoe? <span class="marker"
-					>Daar beginnen we.</span
-				>
+				De betere vraag: waar gaat <span class="marker">uw tijd</span> nu eigenlijk naartoe?
 			</p>
 		</div>
 	</div>
@@ -485,7 +504,7 @@
 					staat, waar u naartoe wilt en wat uw budget is.
 				</p>
 				<p class="display mt-6 text-2xl leading-snug">
-					<span class="marker">Groeit u, dan groeien we samen verder.</span>
+					Groeit u, dan groeien we <span class="marker">samen verder</span>.
 				</p>
 			</div>
 			<img
@@ -503,8 +522,11 @@
 <!-- Timeline -->
 <section class="bg-paper-2 px-6 py-24">
 	<div class="mx-auto max-w-6xl">
-		<h2 class="display max-w-3xl text-4xl text-balance sm:text-5xl">
-			Zo gaan we <span class="marker">te werk</span>.
+		<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-ink-dim uppercase">
+			Maar maatwerk duurt toch maanden?
+		</p>
+		<h2 class="display mt-4 max-w-3xl text-4xl text-balance sm:text-5xl">
+			Hier niet. Op dag 30 lost een eerste versie <span class="marker">één probleem</span> op.
 		</h2>
 		<ol
 			class="relative mt-16 grid gap-10 md:mt-28 md:grid-cols-5 md:grid-rows-[auto_auto_auto_1fr] md:gap-x-6 md:gap-y-0"
@@ -607,26 +629,78 @@
 	<div class="mx-auto max-w-6xl">
 		<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-ink-dim uppercase">Na dag 30</p>
 		<h2 class="display mt-4 max-w-3xl text-4xl text-balance sm:text-5xl">
-			Elke maand uw <span class="marker">grootste probleem</span> minder.
+			Uw bedrijf blijft veranderen. <span class="marker">De software ook.</span>
 		</h2>
 		<p class="mt-6 max-w-2xl text-xl leading-relaxed text-ink-dim">
-			Uw bedrijf blijft veranderen. De software verandert mee.
+			Elke maand uw grootste probleem minder.
 		</p>
 		<div class="mt-14 grid gap-12 lg:grid-cols-2">
-			<ol class="space-y-7">
-				{#each loop as step, i}
-					<li class="flex gap-5">
-						<span
-							class="display flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-signal text-lg"
-							>{i + 1}</span
-						>
-						<div>
-							<h3 class="display text-2xl">{step.when}</h3>
-							<p class="mt-1 leading-relaxed text-ink-dim">{step.body}</p>
-						</div>
+			<div>
+				<!-- The loop: "next month?" runs back into step 1, or you pause or stop -->
+				<ol class="relative space-y-7 pl-8">
+					<span
+						aria-hidden="true"
+						class="absolute top-5 bottom-5 left-0 mb-0 w-8 rounded-l-2xl border-y-2 border-l-2 border-ink-dim"
+					></span>
+					<span
+						aria-hidden="true"
+						class="absolute top-5 left-6 mb-0 -translate-y-1/2 border-y-[7px] border-l-[9px] border-y-transparent border-l-ink-dim"
+					></span>
+					{#each loop as step, i}
+						<li class="flex gap-5">
+							<span
+								class="display relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-signal text-lg"
+								>{i + 1}</span
+							>
+							<div>
+								<h3 class="display text-2xl">{step.when}</h3>
+								<p class="mt-1 leading-relaxed text-ink-dim">{step.body}</p>
+							</div>
+						</li>
+					{/each}
+					<li class="flex h-10 w-fit items-center gap-3 rounded-xl bg-paper pr-1.5 pl-4">
+						<span class="font-semibold text-ink-dim">En volgende maand opnieuw?</span>
+						<span class="flex gap-1">
+							<span
+								title="Ja, het volgende knelpunt"
+								class="flex h-7 w-7 items-center justify-center rounded-full bg-signal text-ink"
+							>
+								<svg
+									aria-hidden="true"
+									viewBox="0 0 24 24"
+									class="h-3.5 w-3.5 fill-none stroke-current stroke-[2.5]"
+									><path d="M21 12a9 9 0 1 1-2.64-6.36L21 8" /><path d="M21 3v5h-5" /></svg
+								>
+								<span class="sr-only">Ja, het volgende knelpunt</span>
+							</span>
+							<span
+								title="Even pauzeren"
+								class="flex h-7 w-7 items-center justify-center rounded-full border border-line bg-paper-2 text-ink-dim"
+							>
+								<svg aria-hidden="true" viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current"
+									><rect x="6" y="5" width="4" height="14" rx="1" /><rect
+										x="14"
+										y="5"
+										width="4"
+										height="14"
+										rx="1"
+									/></svg
+								>
+								<span class="sr-only">Even pauzeren</span>
+							</span>
+							<span
+								title="Stoppen, u krijgt alles mee"
+								class="flex h-7 w-7 items-center justify-center rounded-full border border-line bg-paper-2 text-ink-dim"
+							>
+								<svg aria-hidden="true" viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current"
+									><rect x="6" y="6" width="12" height="12" rx="1.5" /></svg
+								>
+								<span class="sr-only">Stoppen, u krijgt alles mee</span>
+							</span>
+						</span>
 					</li>
-				{/each}
-			</ol>
+				</ol>
+			</div>
 			<div class="card self-start p-7">
 				<table class="w-full text-left text-[0.95rem]">
 					<thead>
@@ -634,23 +708,23 @@
 							<th class="w-1/3 py-2 pr-4 font-semibold"></th>
 							<th class="py-2 pr-4 align-bottom font-semibold">
 								<img
-									src="/illustrations/past-niet.webp"
+									src="/illustrations/vorm-past-niet.webp"
 									alt=""
-									width="320"
-									height="320"
+									width="640"
+									height="546"
 									loading="lazy"
-									class="mb-2 w-20"
+									class="mb-2 w-24"
 								/>
 								Een pakket
 							</th>
 							<th class="py-2 align-bottom font-semibold text-ink">
 								<img
-									src="/illustrations/past-wel.webp"
+									src="/illustrations/vorm-past-wel.webp"
 									alt=""
-									width="320"
-									height="320"
+									width="640"
+									height="546"
 									loading="lazy"
-									class="mb-2 w-20"
+									class="mb-2 w-24"
 								/>
 								PollyWolly
 							</th>
@@ -678,22 +752,37 @@
 <section class="px-6 py-24">
 	<div class="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1.2fr_1fr]">
 		<div>
-			<h2 class="display text-4xl text-balance sm:text-5xl">
+			<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-ink-dim uppercase">
+				Wat kost dat?
+			</p>
+			<h2 class="display mt-4 text-4xl text-balance sm:text-5xl">
 				Wat u krijgt voor <span class="marker">€9.500</span>.
 			</h2>
-			<dl class="mt-10 divide-y divide-line border-y border-line">
+			<p class="mt-6 text-ink-dim">Gerekend aan wat dit werk in België gewoonlijk kost:</p>
+			<ul class="mt-3 flex flex-wrap gap-2 font-mono text-sm text-ink-dim">
+				<li class="rounded-lg bg-paper-2 px-3 py-1">ontwikkelaar €600/dag</li>
+				<li class="rounded-lg bg-paper-2 px-3 py-1">analist €600/dag</li>
+				<li class="rounded-lg bg-paper-2 px-3 py-1">projectleider €650/dag</li>
+				<li class="rounded-lg bg-paper-2 px-3 py-1">opleidingsdag €1.000</li>
+				<li class="rounded-lg bg-paper-2 px-3 py-1">support €200/maand</li>
+				<li class="rounded-lg bg-paper-2 px-3 py-1">hosting €450/maand</li>
+			</ul>
+			<dl class="mt-8 divide-y divide-line border-y border-line">
 				{#each stack as item}
 					<div class="flex items-baseline justify-between gap-6 py-4">
 						<dt>
 							<span class="font-semibold">{item.name}</span>
 							<span class="mt-0.5 block text-[0.95rem] text-ink-dim">{item.what}</span>
 						</dt>
-						<dd class="shrink-0 font-mono text-ink-dim">{item.value}</dd>
+						<dd class="shrink-0 text-right font-mono text-ink-dim">
+							{item.value}
+							<span class="mt-0.5 block text-xs whitespace-nowrap">{item.basis}</span>
+						</dd>
 					</div>
 				{/each}
 				<div class="flex items-baseline justify-between py-4">
 					<dt class="font-semibold">Totale waarde</dt>
-					<dd class="font-mono text-ink-dim line-through">€16.700</dd>
+					<dd class="font-mono text-ink-dim line-through">€22.650</dd>
 				</div>
 				<div class="flex items-baseline justify-between py-4">
 					<dt class="display text-2xl">Uw prijs</dt>
@@ -701,7 +790,7 @@
 				</div>
 			</dl>
 			<ul class="mt-6 space-y-1.5 text-ink-dim">
-				<li>Betaling: de helft bij de start, de helft wanneer het werkt.</li>
+				<li>Betaling: niets vooraf, alles pas wanneer het werkt.</li>
 				<li>Daarna: elke volgende maand €9.500, maandelijks opzegbaar.</li>
 				<li>Terugkerende kosten na 3 maanden staan vooraf op uw plan. Geen verrassingen.</li>
 				<li class="text-sm">Alle prijzen excl. btw.</li>
@@ -715,8 +804,8 @@
 			</p>
 			<p class="display mt-2 text-3xl leading-tight">Daarom zoek ik 3 stichtende klanten.</p>
 			<p class="mt-6 text-lg leading-relaxed">
-				U betaalt <span class="display marker text-4xl">€4.750</span>, de helft. In ruil mag ik uw
-				project als case publiceren, met cijfers, en schrijft u een eerlijke review.
+				U betaalt <span class="display marker text-4xl">€4.750</span> per maand, de eerste 3 maanden.
+				In ruil publiceer ik uw project als case, met cijfers, en schrijft u een eerlijke review.
 			</p>
 			<p class="mt-6 flex items-center gap-3 font-semibold">
 				<span class="flex gap-1.5" aria-hidden="true">
@@ -728,7 +817,7 @@
 				Nog {placesLeft} van 3 plaatsen
 			</p>
 			<p class="mt-2 text-sm text-ink-dim">
-				Daarna €7.125 voor klant 4 tot 6, vanaf klant 7 de volle prijs.
+				Klant 4 tot 6 betaalt de eerste 3 maanden €7.125, vanaf klant 7 de volle prijs.
 			</p>
 			<a href={bookingUrl} class="btn-signal mt-8"
 				>Plan een gesprek <span aria-hidden="true" class="ml-2">→</span></a
@@ -740,8 +829,11 @@
 <!-- Guarantees -->
 <section class="bg-paper-2 px-6 py-24">
 	<div class="mx-auto max-w-6xl">
-		<h2 class="display max-w-3xl text-4xl text-balance sm:text-5xl">
-			Het risico ligt <span class="marker">bij mij</span>, niet bij u.
+		<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-ink-dim uppercase">
+			En als het niet werkt?
+		</p>
+		<h2 class="display mt-4 max-w-3xl text-4xl text-balance sm:text-5xl">
+			Dan is dat <span class="marker">mijn probleem</span>, niet het uwe.
 		</h2>
 		<div class="mt-14 grid gap-5 md:grid-cols-3 md:grid-rows-[auto_auto_1fr]">
 			{#each guarantees as g}
@@ -766,13 +858,16 @@
 <section class="bg-night px-6 py-24 text-snow">
 	<div class="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2">
 		<div>
-			<h2 class="display text-4xl text-balance sm:text-5xl">
-				Ik bouw dit al. Klik zelf <span class="text-signal">rond.</span>
+			<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-snow-dim uppercase">
+				Maar u kent mij nog niet
+			</p>
+			<h2 class="display mt-4 text-4xl text-balance sm:text-5xl">
+				Zo ziet software van <span class="text-signal">PollyWolly</span> eruit.
 			</h2>
 			<p class="mt-6 text-lg leading-relaxed text-snow-dim">
-				PollyWolly is nieuw, maar ik bouw niet voor het eerst. <strong class="text-snow"
-					>Databakkes.be</strong
-				> is van mij: gratis gegevens over elke onderneming in België, gebouwd en beheerd door mij.
+				Uw software zal er anders uitzien, maar ze wordt even degelijk gebouwd. Neem <strong
+					class="text-snow">Databakkes.be</strong
+				>: gratis gegevens over elke onderneming in België, gebouwd en beheerd door mij.
 			</p>
 			<a href="https://databakkes.be" class="btn-signal mt-8"
 				>Bekijk databakkes.be <span aria-hidden="true">↗</span></a
@@ -802,10 +897,11 @@
 					</p>
 				</div>
 				<div class="col-span-2 bg-night-2 p-6">
-					<p class="display text-4xl text-signal">500.000+</p>
-					<p class="mt-1 text-snow-dim">
-						opvragingen per week, dag en nacht: bezoekers, Google, Bing, ChatGPT, Claude en
-						Perplexity.
+					<p class="display text-4xl text-signal">
+						500.000+ <span class="text-2xl text-snow">opvragingen per week</span>
+					</p>
+					<p class="mt-2 text-snow-dim">
+						Vooral bots en AI. Databakkes draait er dag en nacht onder door.
 					</p>
 				</div>
 				<div class="col-span-2 bg-night-2 p-6">
@@ -836,8 +932,8 @@
 		</p>
 		<p class="mt-4 text-xl leading-relaxed text-ink-dim">
 			Geen verkoper of projectmanager tussen ons in. U spreekt mij, en ik doe het werk zelf. Waar
-			nodig werk ik samen met vaste partners: andere ontwikkelaars, en juridische specialisten voor
-			GDPR en contracten.
+			nodig werk ik samen met vaste partners: twee IT-bedrijven, en een advocatenkantoor
+			gespecialiseerd in IT-recht en GDPR.
 		</p>
 		<p class="mt-4 text-xl font-semibold">Daarom neem ik maximaal 2 nieuwe projecten per maand.</p>
 	</div>

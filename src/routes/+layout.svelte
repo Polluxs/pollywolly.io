@@ -43,7 +43,7 @@
 		>
 			<div>
 				<p class="text-2xl text-snow"><Logo /></p>
-				<p class="mt-2">Uw bedrijf groeit, niet uw handwerk.</p>
+				<p class="mt-2">Voor ondernemers die hun tijd terug willen.</p>
 			</div>
 			<div class="space-y-1 sm:text-right">
 				<p>[telefoonnummer] · [e-mail]</p>

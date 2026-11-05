@@ -758,16 +758,7 @@
 			<h2 class="display mt-4 text-4xl text-balance sm:text-5xl">
 				Wat u krijgt voor <span class="marker">€9.500</span>.
 			</h2>
-			<p class="mt-6 text-ink-dim">Gerekend aan wat dit werk in België gewoonlijk kost:</p>
-			<ul class="mt-3 flex flex-wrap gap-2 font-mono text-sm text-ink-dim">
-				<li class="rounded-lg bg-paper-2 px-3 py-1">ontwikkelaar €600/dag</li>
-				<li class="rounded-lg bg-paper-2 px-3 py-1">analist €600/dag</li>
-				<li class="rounded-lg bg-paper-2 px-3 py-1">projectleider €650/dag</li>
-				<li class="rounded-lg bg-paper-2 px-3 py-1">opleidingsdag €1.000</li>
-				<li class="rounded-lg bg-paper-2 px-3 py-1">support €750/maand</li>
-				<li class="rounded-lg bg-paper-2 px-3 py-1">beheerde cloud €450/maand</li>
-			</ul>
-			<dl class="mt-8 divide-y divide-line border-y border-line">
+			<dl class="mt-10 divide-y divide-line border-y border-line">
 				{#each stack as item}
 					<div class="flex items-baseline justify-between gap-6 py-4">
 						<dt>
@@ -800,7 +791,11 @@
 					(€450/maand). Sneller hulp nodig dan mijn agenda toelaat? Dan spreken we een SLA af, op maat
 					van uw noden.
 				</li>
-				<li>Prijzen excl. btw.</li>
+				<li>
+					Gerekend aan Belgische marktprijzen: ontwikkelaar en analist €600/dag, projectleider
+					€650/dag, opleidingsdag €1.000, support €750/maand, beheerde cloud €450/maand. Prijzen
+					excl. btw.
+				</li>
 			</ul>
 		</div>
 		<aside

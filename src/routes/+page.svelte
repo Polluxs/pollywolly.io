@@ -313,8 +313,8 @@
 			</h1>
 			<p class="mt-8 max-w-xl text-lg leading-relaxed text-snow-dim sm:text-xl">
 				Plannen, overtypen, nabellen, fouten herstellen: het eet uw dagen op. Ik kom kijken waar uw
-				tijd naartoe gaat en zeg eerlijk wat helpt. Soms is dat software op maat, soms een bestaand
-				pakket, soms gewoon een andere afspraak. Binnen 48 uur hebt u een plan met prijs.
+				tijd naartoe gaat en wat dat oplost. Soms is dat software op maat, soms een bestaand pakket,
+				soms gewoon een andere afspraak. Binnen 48 uur hebt u een plan met prijs.
 			</p>
 			<div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
 				<a href={bookingUrl} class="btn-signal text-lg"
@@ -741,7 +741,7 @@
 					</tbody>
 				</table>
 				<p class="mt-5 text-sm text-ink-dim">
-					Eerlijk is eerlijk: een pakket is sneller gestart. Volstaat dat voor u, dan zeg ik het.
+					Een pakket is sneller gestart. Volstaat dat voor u, dan zeg ik het.
 				</p>
 			</div>
 		</div>
@@ -802,7 +802,7 @@
 			class="self-start rounded-[1.25rem] border-2 border-ink bg-paper-2 p-8 lg:sticky lg:top-8 lg:mt-24"
 		>
 			<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-ink-dim uppercase">
-				PollyWolly is nieuw
+				Nieuw aanbod
 			</p>
 			<p class="display mt-2 text-3xl leading-tight">Daarom zoek ik 3 stichtende klanten.</p>
 			<p class="mt-6 text-lg leading-relaxed">
@@ -871,7 +871,7 @@
 					class="text-snow">Databakkes.be</strong
 				>: gratis gegevens over elke onderneming in België, gebouwd en beheerd door mij.
 			</p>
-			<a href="https://databakkes.be" class="btn-signal mt-8"
+			<a href="https://databakkes.be" target="_blank" rel="noopener" class="btn-signal mt-8"
 				>Bekijk databakkes.be <span aria-hidden="true">↗</span></a
 			>
 			<p class="mt-4 text-snow-dim">Zoek gerust uw eigen bedrijf op.</p>
@@ -889,7 +889,7 @@
 					<p class="mt-1 text-sm text-snow-dim">actieve ondernemingen</p>
 				</div>
 				<div class="bg-night-2 p-6">
-					<p class="display text-4xl">1,9 mln</p>
+					<p class="display text-4xl">2 mln</p>
 					<p class="mt-1 text-sm text-snow-dim">pagina's, in 3 talen</p>
 				</div>
 				<div class="col-span-2 bg-night-2 p-6">
@@ -937,7 +937,7 @@
 			nodig werk ik samen met vaste partners: twee IT-bedrijven, en een advocatenkantoor
 			gespecialiseerd in IT-recht en GDPR.
 		</p>
-		<p class="mt-4 text-xl font-semibold">Daarom neem ik maximaal 2 nieuwe projecten per maand.</p>
+		<p class="mt-4 text-xl font-semibold">Daarom neem ik maximaal 3 nieuwe projecten per maand.</p>
 	</div>
 </section>
 

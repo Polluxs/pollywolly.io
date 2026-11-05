@@ -95,7 +95,7 @@
 			when: 'Daarna',
 			title: 'Volgende knelpunt',
 			tag: '',
-			body: 'Of u stopt. Maandelijks opzegbaar.'
+			body: 'Of u stopt. Geen abonnement.'
 		}
 	];
 
@@ -131,16 +131,16 @@
 			value: '€1.000'
 		},
 		{
-			name: 'Antwoord dezelfde werkdag',
-			what: 'Support, rechtstreeks naar mij',
-			basis: '3 maanden support',
-			value: '€600'
+			name: 'Ligt het stil, dan ben ik er dezelfde werkdag mee bezig',
+			what: 'Bij een storing belt u mij rechtstreeks. Andere vragen: antwoord binnen 3 werkdagen.',
+			basis: '1 maand support',
+			value: '€750'
 		},
 		{
 			name: 'Het blijft draaien',
-			what: 'Hosting, back-ups en monitoring',
-			basis: '3 maanden hosting',
-			value: '€1.350'
+			what: 'Beheerde cloud met back-ups en monitoring. Geen websitehosting: hier draait uw bedrijf op.',
+			basis: '1 maand beheerde cloud',
+			value: '€450'
 		},
 		{
 			name: 'Niet afhankelijk van mij',
@@ -226,7 +226,7 @@
 		},
 		{
 			q: 'Wat als ik wil stoppen?',
-			a: 'Maandelijks opzegbaar. U krijgt alles mee wat u aanvaard hebt, met documentatie zodat een andere ontwikkelaar kan overnemen.'
+			a: 'Dat kan na elk knelpunt, er is geen abonnement. U krijgt alles mee wat u aanvaard hebt, met documentatie zodat een andere ontwikkelaar kan overnemen.'
 		},
 		{
 			q: 'Wat moet ik zelf doen?',
@@ -764,8 +764,8 @@
 				<li class="rounded-lg bg-paper-2 px-3 py-1">analist €600/dag</li>
 				<li class="rounded-lg bg-paper-2 px-3 py-1">projectleider €650/dag</li>
 				<li class="rounded-lg bg-paper-2 px-3 py-1">opleidingsdag €1.000</li>
-				<li class="rounded-lg bg-paper-2 px-3 py-1">support €200/maand</li>
-				<li class="rounded-lg bg-paper-2 px-3 py-1">hosting €450/maand</li>
+				<li class="rounded-lg bg-paper-2 px-3 py-1">support €750/maand</li>
+				<li class="rounded-lg bg-paper-2 px-3 py-1">beheerde cloud €450/maand</li>
 			</ul>
 			<dl class="mt-8 divide-y divide-line border-y border-line">
 				{#each stack as item}
@@ -782,18 +782,25 @@
 				{/each}
 				<div class="flex items-baseline justify-between py-4">
 					<dt class="font-semibold">Totale waarde</dt>
-					<dd class="font-mono text-ink-dim line-through">€22.650</dd>
+					<dd class="font-mono text-ink-dim line-through">€21.900</dd>
 				</div>
 				<div class="flex items-baseline justify-between py-4">
 					<dt class="display text-2xl">Uw prijs</dt>
 					<dd class="display text-3xl">€9.500</dd>
 				</div>
 			</dl>
-			<ul class="mt-6 space-y-1.5 text-ink-dim">
-				<li>Betaling: niets vooraf, alles pas wanneer het werkt.</li>
-				<li>Daarna: elke volgende maand €9.500, maandelijks opzegbaar.</li>
-				<li>Terugkerende kosten na 3 maanden staan vooraf op uw plan. Geen verrassingen.</li>
-				<li class="text-sm">Alle prijzen excl. btw.</li>
+			<ul class="mt-4 space-y-0.5 text-[0.8rem] leading-snug text-ink-dim">
+				<li><strong class="text-ink">Niets vooraf:</strong> u betaalt pas wanneer het werkt.</li>
+				<li>
+					<strong class="text-ink">Geen abonnement:</strong> na dag 30 kiest u per knelpunt of we verder
+					gaan (€9.500/maand).
+				</li>
+				<li>
+					<strong class="text-ink">Stopt de ontwikkeling,</strong> dan blijft alleen de beheerde cloud
+					(€450/maand). Sneller hulp nodig dan mijn agenda toelaat? Dan spreken we een SLA af, op maat
+					van uw noden.
+				</li>
+				<li>Prijzen excl. btw.</li>
 			</ul>
 		</div>
 		<aside

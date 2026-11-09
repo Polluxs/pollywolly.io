@@ -65,28 +65,37 @@
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
-<section class="bg-night px-6 pt-8 pb-16 text-snow sm:pb-20">
+<section class="bg-night px-6 pt-8 pb-14 text-snow sm:pb-16">
 	<div class="mx-auto max-w-6xl">
 		<a
 			href={resolve('/')}
 			class="inline-block text-xl text-snow"
 			aria-label="PollyWolly, naar de homepage"><Logo /></a
 		>
-		<h1 class="display mt-14 max-w-4xl text-[clamp(2.25rem,4.4vw,3.75rem)] text-balance">
-			{headline.head} <span class="text-signal">{headline.mark}</span>{headline.tail ?? ''}
-		</h1>
-		<p class="mt-6 max-w-2xl text-xl leading-relaxed text-snow-dim">
-			Daar gaat het gesprek over. Kies hieronder een moment, of laat uw nummer achter.
-		</p>
-		<ol class="mt-12 grid gap-6 sm:grid-cols-3">
-			{#each steps as [title, body], i (title)}
-				<li class="border-t border-night-line pt-5">
-					<p class="font-mono text-sm text-signal">0{i + 1}</p>
-					<h2 class="display mt-2 text-xl">{title}</h2>
-					<p class="mt-2 text-snow-dim">{body}</p>
-				</li>
-			{/each}
-		</ol>
+		<div class="mt-12 grid items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
+			<div>
+				<h1 class="display text-[clamp(2.25rem,4.4vw,3.75rem)] text-balance">
+					{headline.head} <span class="text-signal">{headline.mark}</span>{headline.tail ?? ''}
+				</h1>
+				<p class="mt-6 max-w-xl text-xl leading-relaxed text-snow-dim">
+					Daar gaat het gesprek over. Kies een moment, of laat uw nummer achter.
+				</p>
+				<a href="#contact" class="btn-signal mt-8 text-lg"
+					>Kies een moment <span aria-hidden="true">↓</span></a
+				>
+			</div>
+			<ol class="grid gap-5 rounded-[1.25rem] border border-night-line p-7">
+				{#each steps as [title, body], i (title)}
+					<li class="flex gap-4">
+						<p class="font-mono text-sm leading-7 text-signal">0{i + 1}</p>
+						<div>
+							<h2 class="display text-lg">{title}</h2>
+							<p class="mt-1 text-snow-dim">{body}</p>
+						</div>
+					</li>
+				{/each}
+			</ol>
+		</div>
 	</div>
 </section>
 

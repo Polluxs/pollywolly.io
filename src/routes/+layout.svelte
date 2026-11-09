@@ -13,7 +13,8 @@
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					page: $page.url.pathname,
+					// Keep the query so ad clicks (utm_*) show up in the logs.
+					page: $page.url.pathname + window.location.search,
 					referrer: document.referrer || ''
 				})
 			}).catch(() => {});
@@ -44,6 +45,10 @@
 			<div>
 				<p class="text-2xl text-snow"><Logo /></p>
 				<p class="mt-2">Voor ondernemers die hun tijd terug willen.</p>
+				<p class="mt-4">
+					Onze advertenties maken we zelf. Ook zin in reclame waar ondernemers om lachen? Vraag het
+					gerust.
+				</p>
 			</div>
 			<div class="space-y-1 sm:text-right">
 				<p>[telefoonnummer] · [e-mail]</p>

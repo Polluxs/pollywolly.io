@@ -1,9 +1,7 @@
 <script lang="ts">
 	import Logo from '$lib/Logo.svelte';
-	const bookingUrl = '#contact';
-	const phone = '[telefoonnummer]';
-	const placesLeft = 3;
-	const nextStart = '[datum]';
+	import Contact from '$lib/Contact.svelte';
+	import { bookingUrl, phone, totalPlaces, placesLeft, nextStart } from '$lib/site';
 
 	const problems = [
 		{
@@ -80,9 +78,9 @@
 		},
 		{
 			when: 'Deze week',
-			title: 'Tijdscan',
-			tag: 'gratis, halve dag',
-			body: 'Ik kijk mee. Binnen 48 uur: een plan met prijs.'
+			title: 'Plan met prijs',
+			tag: 'gratis',
+			body: 'Wat het oplost en wat het kost, voor één knelpunt.'
 		},
 		{
 			when: 'Week 1 tot 4',
@@ -100,12 +98,6 @@
 	];
 
 	const stack = [
-		{
-			name: 'Weten waar uw uren naartoe gaan',
-			what: 'Tijdscan ter plaatse. Gratis, ook als u niet verder gaat.',
-			basis: '1,5 dag analist',
-			value: '€900'
-		},
 		{
 			name: 'Op dag 30 werkt uw team ermee',
 			what: 'Eén afgebakend proces, gebouwd en in gebruik',
@@ -186,24 +178,19 @@
 		}
 	];
 
-	const messageChips = [
-		'Onze planning zit in Excel',
-		'We typen alles twee keer over',
-		'Ons pakket kan niet wat wij willen',
-		'Alles hangt af van één collega'
-	];
-	let message = $state('');
-
 	const faq = [
 		{
 			q: 'Wat kost software op maat?',
-			a: 'De eerste werkende versie kost €9.500, stichtende klanten betalen de eerste 3 maanden €4.750 per maand. Na de gratis scan krijgt u binnen 48 uur een prijsvork voor uw eigen project.'
+			a: 'De eerste werkende versie kost €9.500, stichtende klanten betalen de eerste 3 maanden €4.750 per maand. Na het gratis gesprek krijgt u een prijsvork voor uw eigen project.'
 		},
 		{
 			q: 'Hoe lang duurt het?',
 			a: 'Testversie in week 1, werkende versie op dag 30. Grotere projecten bouwen we per maand verder, telkens met een werkend resultaat.'
 		},
-		{ q: 'Moet ik eerst betalen voor een analyse?', a: 'Nee. Het gesprek en de scan zijn gratis.' },
+		{
+			q: 'Moet ik eerst betalen voor een analyse?',
+			a: 'Nee. Het gesprek en het plan met prijs zijn gratis.'
+		},
 		{
 			q: 'Waarom geen standaardpakket?',
 			a: 'Soms is dat beter, en dan zeg ik het. Maatwerk loont wanneer uw manier van werken uw voorsprong is, en een pakket u dwingt om eromheen te werken.'
@@ -274,7 +261,7 @@
 	/>
 	<meta
 		property="og:description"
-		content="Software op maat voor Vlaamse KMO's. Gratis Tijdscan, werkend op dag 30, code van u."
+		content="Software op maat voor Vlaamse KMO's. Gratis gesprek, werkend op dag 30, code van u."
 	/>
 	<meta property="og:image" content="https://pollywolly.io/og.jpg" />
 	<meta property="og:image:width" content="1200" />
@@ -307,14 +294,11 @@
 			</p>
 			<h1 class="display mt-6 text-[clamp(2.25rem,4.4vw,3.75rem)] text-balance">
 				Komt u als ondernemer nog toe aan het werk waarvoor u juist nodig bent?
-				<span class="mt-3 block font-bold text-signal"
-					>Op dag 30 hebt u de eerste uren&nbsp;terug.</span
-				>
 			</h1>
+			<p class="display mt-5 text-2xl text-signal sm:text-3xl">Eerste versie op dag&nbsp;30.</p>
 			<p class="mt-8 max-w-xl text-lg leading-relaxed text-snow-dim sm:text-xl">
-				Plannen, overtypen, nabellen, fouten herstellen: het eet uw dagen op. Ik kom kijken waar uw
-				tijd naartoe gaat en wat dat oplost. Soms is dat software op maat, soms een bestaand pakket,
-				soms gewoon een andere afspraak. Binnen 48 uur hebt u een plan met prijs.
+				Plannen, overtypen, nabellen: het eet uw dagen op. Samen zoeken we uit waar uw tijd naartoe
+				gaat. Daarna bouwen we de software die uw werk overneemt.
 			</p>
 			<div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
 				<a href={bookingUrl} class="btn-signal text-lg"
@@ -324,16 +308,18 @@
 					Of bel me gewoon: <span class="font-semibold text-snow">{phone}</span>
 				</p>
 			</div>
-			<p class="mt-4 text-snow-dim">30 minuten. Daarna weet u of maatwerk bij u past.</p>
-			<p class="mt-8 text-lg font-semibold text-snow">Het gesprek en de Tijdscan zijn gratis.</p>
-			<p class="mt-3 flex items-center gap-3 text-sm text-snow-dim">
+			<p class="mt-4 text-snow-dim">
+				<span class="font-semibold text-snow">30 minuten, gratis.</span> Daarna weet u of maatwerk bij
+				u past.
+			</p>
+			<p class="mt-6 flex items-center gap-3 text-sm text-snow-dim">
 				<span class="flex gap-1.5" aria-hidden="true">
-					{#each [0, 1, 2] as i}
+					{#each Array.from({ length: totalPlaces }, (_, n) => n) as i (i)}
 						<span class="h-2.5 w-2.5 rounded-full {i < placesLeft ? 'bg-signal' : 'bg-night-line'}"
 						></span>
 					{/each}
 				</span>
-				Nog {placesLeft} van 3 stichtende plaatsen · Start maandag {nextStart}
+				Nog {placesLeft} van {totalPlaces} stichtende plaatsen · Start maandag {nextStart}
 			</p>
 		</div>
 		<div aria-hidden="true" class="relative hidden h-[24rem] self-center lg:block">
@@ -773,7 +759,7 @@
 				{/each}
 				<div class="flex items-baseline justify-between py-4">
 					<dt class="font-semibold">Totale waarde</dt>
-					<dd class="font-mono text-ink-dim line-through">€21.900</dd>
+					<dd class="font-mono text-ink-dim line-through">€21.000</dd>
 				</div>
 				<div class="flex items-baseline justify-between py-4">
 					<dt class="display text-2xl">Uw prijs</dt>
@@ -792,9 +778,8 @@
 					van uw noden.
 				</li>
 				<li>
-					Gerekend aan Belgische marktprijzen: ontwikkelaar en analist €600/dag, projectleider
-					€650/dag, opleidingsdag €1.000, support €750/maand, beheerde cloud €450/maand. Prijzen
-					excl. btw.
+					Gerekend aan Belgische marktprijzen: ontwikkelaar €600/dag, projectleider €650/dag,
+					opleidingsdag €1.000, support €750/maand, beheerde cloud €450/maand. Prijzen excl. btw.
 				</li>
 			</ul>
 		</div>
@@ -804,22 +789,22 @@
 			<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-ink-dim uppercase">
 				Nieuw aanbod
 			</p>
-			<p class="display mt-2 text-3xl leading-tight">Daarom zoek ik 3 stichtende klanten.</p>
+			<p class="display mt-2 text-3xl leading-tight">Daarom zoek ik 2 stichtende klanten.</p>
 			<p class="mt-6 text-lg leading-relaxed">
 				U betaalt <span class="display marker text-4xl">€4.750</span> per maand, de eerste 3 maanden.
 				In ruil publiceer ik uw project als case, met cijfers, en schrijft u een eerlijke review.
 			</p>
 			<p class="mt-6 flex items-center gap-3 font-semibold">
 				<span class="flex gap-1.5" aria-hidden="true">
-					{#each [0, 1, 2] as i}
+					{#each Array.from({ length: totalPlaces }, (_, n) => n) as i (i)}
 						<span class="h-3 w-3 rounded-full border-2 border-ink {i < placesLeft ? 'bg-ink' : ''}"
 						></span>
 					{/each}
 				</span>
-				Nog {placesLeft} van 3 plaatsen
+				Nog {placesLeft} van {totalPlaces} plaatsen
 			</p>
 			<p class="mt-2 text-sm text-ink-dim">
-				Klant 4 tot 6 betaalt de eerste 3 maanden €7.125, vanaf klant 7 de volle prijs.
+				Klant 3 tot 5 betaalt de eerste 3 maanden €7.125, vanaf klant 6 de volle prijs.
 			</p>
 			<a href={bookingUrl} class="btn-signal mt-8"
 				>Plan een gesprek <span aria-hidden="true" class="ml-2">→</span></a
@@ -937,7 +922,7 @@
 			nodig werk ik samen met vaste partners: twee IT-bedrijven, en een advocatenkantoor
 			gespecialiseerd in IT-recht en GDPR.
 		</p>
-		<p class="mt-4 text-xl font-semibold">Daarom neem ik maximaal 3 nieuwe projecten per maand.</p>
+		<p class="mt-4 text-xl font-semibold">Daarom neem ik maximaal 2 nieuwe projecten per maand.</p>
 	</div>
 </section>
 
@@ -974,89 +959,9 @@
 			Dit is mijn eigen agenda. Kies een moment dat u past, en u spreekt mij. Geen verkoper, geen
 			verplichtingen.
 		</p>
-		<div class="mt-12 grid gap-5 lg:grid-cols-[1.1fr_1fr]">
-			<div class="flex flex-col rounded-[1.25rem] bg-ink p-8 text-snow sm:p-10">
-				<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-signal uppercase">
-					Mijn eigen agenda
-				</p>
-				<h3 class="display mt-3 text-3xl sm:text-4xl">Plan een gesprek van 30 minuten</h3>
-				<p class="mt-3 text-lg text-snow-dim">Via Google Meet of telefoon. U kiest het moment.</p>
-				<a href={bookingUrl} class="btn-signal mt-8 self-start text-lg"
-					>Plan een gesprek <span aria-hidden="true">→</span></a
-				>
-				<div class="mt-10 border-t border-night-line pt-8">
-					<p class="text-snow-dim">
-						Liever meteen bellen? Ik neem op als ik kan, anders bel ik terug.
-					</p>
-					<a
-						href="tel:{phone}"
-						class="display mt-2 inline-block text-2xl text-snow hover:text-signal">{phone}</a
-					>
-				</div>
-			</div>
-			<form class="card p-8 sm:p-10" onsubmit={(e) => e.preventDefault()}>
-				<div class="flex items-start justify-between gap-4">
-					<h3 class="display text-3xl">Of ik bel u</h3>
-					<img
-						src="/illustrations/koffie.webp"
-						alt=""
-						width="320"
-						height="320"
-						loading="lazy"
-						class="-mt-3 -mr-2 w-24 shrink-0 sm:w-28"
-					/>
-				</div>
-				<p class="mt-2 text-ink-dim">Laat uw gegevens achter, ik bel binnen één werkdag.</p>
-				<div class="mt-6 grid gap-4 sm:grid-cols-2">
-					<label class="block text-sm font-semibold" for="naam"
-						>Naam
-						<input
-							id="naam"
-							type="text"
-							class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
-						/>
-					</label>
-					<label class="block text-sm font-semibold" for="tel"
-						>Telefoon
-						<input
-							id="tel"
-							type="tel"
-							class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
-						/>
-					</label>
-					<label class="block text-sm font-semibold sm:col-span-2" for="wanneer"
-						>Wanneer best bereikbaar?
-						<input
-							id="wanneer"
-							type="text"
-							placeholder="bv. voormiddag, na 17u"
-							class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
-						/>
-					</label>
-					<label class="block text-sm font-semibold sm:col-span-2" for="vast"
-						>Wat loopt er vast? <span class="font-normal text-ink-dim">(optioneel)</span>
-						<span class="mt-2 flex flex-wrap gap-2">
-							{#each messageChips as chip}
-								<button
-									type="button"
-									class="rounded-full border border-line bg-paper px-3 py-1.5 text-sm font-normal hover:border-ink"
-									onclick={() => (message = chip)}>{chip}</button
-								>
-							{/each}
-						</span>
-						<textarea
-							id="vast"
-							bind:value={message}
-							rows="3"
-							class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
-						></textarea>
-					</label>
-				</div>
-				<button class="btn-signal mt-6 w-full justify-center sm:w-auto">Bel mij terug</button>
-			</form>
-		</div>
+		<Contact {bookingUrl} {phone} class="mt-12" />
 		<p class="mt-8 text-sm text-ink-dim">
-			Volgende start: maandag {nextStart}. Nog {placesLeft} van 3 stichtende plaatsen.
+			Volgende start: maandag {nextStart}. Nog {placesLeft} van {totalPlaces} stichtende plaatsen.
 		</p>
 	</div>
 </section>

@@ -27,6 +27,20 @@ html {
 	scroll-behavior: smooth;
 }
 
+/* Tailwind v4 dropped the pointer cursor on buttons; bring it back for everything clickable. */
+@layer base {
+	button:not(:disabled),
+	[role='button']:not([aria-disabled='true']),
+	summary,
+	label[for],
+	select,
+	input[type='checkbox'],
+	input[type='radio'],
+	input[type='submit'] {
+		cursor: pointer;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

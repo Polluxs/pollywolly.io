@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
+	import { trackEvent } from '$lib/umami';
 
 	// The contact form (call me or email me) with the phone number beside it.
 	// Shared by the homepage, the ad landing page and /contact, so all three stay identical.
@@ -47,6 +48,7 @@
 				if (result.type === 'success') {
 					status = 'sent';
 					via = String(new FormData(formElement).get('via') ?? '');
+					trackEvent('contact_submit', { via, page: page.url.pathname });
 				} else {
 					status = 'error';
 					error =

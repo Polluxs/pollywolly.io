@@ -1,11 +1,15 @@
 <script lang="ts">
-	// The two ways to get in touch: the booking agenda and the call-me-back form.
-	// Shared by the homepage and the ad landing page, so both stay identical.
+	import { enhance } from '$app/forms';
+	import { page } from '$app/state';
+
+	// The contact form (call me or email me) with the phone number beside it.
+	// Shared by the homepage, the ad landing page and /contact, so all three stay identical.
+	type Result = { success?: boolean; via?: string; error?: string } | null | undefined;
 	let {
-		bookingUrl,
 		phone,
+		result = null,
 		class: className = ''
-	}: { bookingUrl: string; phone: string; class?: string } = $props();
+	}: { phone: string; result?: Result; class?: string } = $props();
 
 	const messageChips = [
 		'Onze planning zit in Excel',
@@ -14,28 +18,57 @@
 		'Alles hangt af van één collega'
 	];
 	let message = $state('');
+	let status = $state<'idle' | 'sending' | 'sent' | 'error'>('idle');
+	let error = $state('');
+	let via = $state('');
+
+	// Without JavaScript the form posts to /contact, which hands the outcome back as `result`.
+	const shown = $derived({
+		status:
+			status !== 'idle' ? status : result?.success ? 'sent' : result?.error ? 'error' : 'idle',
+		error: error || result?.error || '',
+		via: via || result?.via || ''
+	});
+
+	const input =
+		'mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal';
+	const choice =
+		'flex cursor-pointer items-center justify-center rounded-lg border border-line bg-paper px-4 py-3 text-base font-semibold has-[:checked]:border-ink has-[:checked]:bg-signal has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-signal';
 </script>
 
-<div class="grid gap-5 lg:grid-cols-[1.1fr_1fr] {className}">
-	<div class="flex flex-col rounded-[1.25rem] bg-ink p-8 text-snow sm:p-10">
-		<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-signal uppercase">
-			Mijn eigen agenda
-		</p>
-		<h3 class="display mt-3 text-3xl sm:text-4xl">Plan een gesprek van 30 minuten</h3>
-		<p class="mt-3 text-lg text-snow-dim">Via Google Meet of telefoon. U kiest het moment.</p>
-		<a href={bookingUrl} class="btn-signal mt-8 self-start text-lg"
-			>Plan een gesprek <span aria-hidden="true">→</span></a
-		>
-		<div class="mt-10 border-t border-night-line pt-8">
-			<p class="text-snow-dim">Liever meteen bellen? Ik neem op als ik kan, anders bel ik terug.</p>
-			<a href="tel:{phone}" class="display mt-2 inline-block text-2xl text-snow hover:text-signal"
-				>{phone}</a
-			>
-		</div>
-	</div>
-	<form class="card p-8 sm:p-10" onsubmit={(e) => e.preventDefault()}>
+<div class="grid gap-5 lg:grid-cols-[1.6fr_1fr] {className}">
+	<form
+		class="group card p-8 sm:p-10"
+		method="POST"
+		action="/contact"
+		use:enhance={() => {
+			status = 'sending';
+			return async ({ result, formElement }) => {
+				if (result.type === 'success') {
+					status = 'sent';
+					via = String(new FormData(formElement).get('via') ?? '');
+				} else {
+					status = 'error';
+					error =
+						result.type === 'failure' && typeof result.data?.error === 'string'
+							? result.data.error
+							: 'Er liep iets mis. Bel mij gerust rechtstreeks.';
+				}
+			};
+		}}
+	>
+		<input type="hidden" name="pagina" value={page.url.pathname} />
+		<!-- Honeypot for bots; hidden from people and screen readers. -->
+		<input
+			type="text"
+			name="website"
+			tabindex="-1"
+			autocomplete="off"
+			aria-hidden="true"
+			class="absolute -left-[9999px] h-0 w-0 opacity-0"
+		/>
 		<div class="flex items-start justify-between gap-4">
-			<h3 class="display text-3xl">Of ik bel u</h3>
+			<h3 class="display text-3xl sm:text-4xl">Neem contact op</h3>
 			<img
 				src="/illustrations/koffie.webp"
 				alt=""
@@ -45,37 +78,56 @@
 				class="-mt-3 -mr-2 w-24 shrink-0 sm:w-28"
 			/>
 		</div>
-		<p class="mt-2 text-ink-dim">Laat uw gegevens achter, ik bel binnen één werkdag.</p>
+		<p class="mt-2 text-ink-dim">
+			U hoort binnen één werkdag van mij. Gratis, geen verplichtingen.
+		</p>
+
 		<div class="mt-6 grid gap-4 sm:grid-cols-2">
-			<label class="block text-sm font-semibold" for="naam"
+			<label class="block text-sm font-semibold sm:col-span-2" for="naam"
 				>Naam
-				<input
-					id="naam"
-					type="text"
-					class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
-				/>
+				<input id="naam" name="naam" type="text" required autocomplete="name" class={input} />
 			</label>
-			<label class="block text-sm font-semibold" for="tel"
+
+			<fieldset class="sm:col-span-2">
+				<legend class="text-sm font-semibold">Hoe neem ik contact op?</legend>
+				<div class="mt-1.5 grid grid-cols-2 gap-3">
+					<label class={choice}
+						><input type="radio" name="via" value="bel" required class="sr-only" />Bel me</label
+					>
+					<label class={choice}
+						><input type="radio" name="via" value="email" class="sr-only" />Ik verkies e-mail</label
+					>
+				</div>
+			</fieldset>
+
+			<!-- Shown by CSS, not JavaScript, so the choice also works without scripts. -->
+			<label class="hidden text-sm font-semibold group-has-[[value=bel]:checked]:block" for="tel"
 				>Telefoon
-				<input
-					id="tel"
-					type="tel"
-					class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
-				/>
+				<input id="tel" name="tel" type="tel" autocomplete="tel" class={input} />
 			</label>
-			<label class="block text-sm font-semibold sm:col-span-2" for="wanneer"
+			<label
+				class="hidden text-sm font-semibold group-has-[[value=bel]:checked]:block"
+				for="wanneer"
 				>Wanneer best bereikbaar?
 				<input
 					id="wanneer"
+					name="wanneer"
 					type="text"
 					placeholder="bv. voormiddag, na 17u"
-					class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
+					class={input}
 				/>
 			</label>
+			<label
+				class="hidden text-sm font-semibold group-has-[[value=email]:checked]:block sm:col-span-2"
+				for="email"
+				>E-mailadres
+				<input id="email" name="email" type="email" autocomplete="email" class={input} />
+			</label>
+
 			<label class="block text-sm font-semibold sm:col-span-2" for="vast"
 				>Wat loopt er vast? <span class="font-normal text-ink-dim">(optioneel)</span>
 				<span class="mt-2 flex flex-wrap gap-2">
-					{#each messageChips as chip}
+					{#each messageChips as chip (chip)}
 						<button
 							type="button"
 							class="rounded-full border border-line bg-paper px-3 py-1.5 text-sm font-normal hover:border-ink"
@@ -83,14 +135,38 @@
 						>
 					{/each}
 				</span>
-				<textarea
-					id="vast"
-					bind:value={message}
-					rows="3"
-					class="mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-3 text-base font-normal"
-				></textarea>
+				<textarea id="vast" name="vast" bind:value={message} rows="3" class={input}></textarea>
 			</label>
 		</div>
-		<button class="btn-signal mt-6 w-full justify-center sm:w-auto">Bel mij terug</button>
+
+		{#if shown.status === 'sent'}
+			<p class="mt-6 rounded-lg bg-paper px-4 py-3 font-semibold" role="status">
+				Goed ontvangen. {shown.via === 'email'
+					? 'U krijgt binnen één werkdag een mail van mij.'
+					: 'Ik bel u binnen één werkdag.'}
+			</p>
+		{:else}
+			{#if shown.status === 'error'}
+				<p class="mt-6 font-semibold text-red-700" role="alert">{shown.error}</p>
+			{/if}
+			<button
+				class="btn-signal mt-6 w-full justify-center sm:w-auto"
+				disabled={status === 'sending'}
+				>{status === 'sending' ? 'Even geduld...' : 'Verstuur'}</button
+			>
+		{/if}
 	</form>
+	<div class="flex flex-col rounded-[1.25rem] bg-ink p-8 text-snow sm:p-10">
+		<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-signal uppercase">
+			Liever meteen bellen?
+		</p>
+		<a
+			href="tel:{phone.replace(/\s/g, '')}"
+			class="display mt-3 inline-block text-3xl text-snow hover:text-signal sm:text-4xl">{phone}</a
+		>
+		<p class="mt-3 text-lg text-snow-dim">Ik neem op als ik kan, anders bel ik terug.</p>
+		<p class="mt-auto border-t border-night-line pt-8 text-snow-dim">
+			U spreekt mij, de persoon die het ook bouwt. Geen verkoper.
+		</p>
+	</div>
 </div>

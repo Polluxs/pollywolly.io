@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Logo from '$lib/Logo.svelte';
 	import Contact from '$lib/Contact.svelte';
-	import { bookingUrl, phone, totalPlaces, placesLeft, nextStart } from '$lib/site';
+	import { phone, totalPlaces, placesLeft } from '$lib/site';
 
 	const problems = [
 		{
@@ -72,7 +72,7 @@
 	const steps = [
 		{
 			when: 'Vandaag',
-			title: 'Plan een gesprek',
+			title: 'Een gesprek',
 			tag: 'gratis, 30 min',
 			body: 'U vertelt wat vastloopt.'
 		},
@@ -283,9 +283,6 @@
 		<div class="lg:col-span-2">
 			<nav class="flex items-center justify-between">
 				<a href="/" class="text-2xl" aria-label="PollyWolly, naar boven"><Logo /></a>
-				<a href="#contact" class="text-sm font-semibold text-snow-dim hover:text-snow"
-					>Plan een gesprek</a
-				>
 			</nav>
 		</div>
 		<div class="pt-10 lg:pt-16">
@@ -301,8 +298,8 @@
 				gaat. Daarna bouwen we de software die uw werk overneemt.
 			</p>
 			<div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-				<a href={bookingUrl} class="btn-signal text-lg"
-					>Plan een gesprek <span aria-hidden="true">→</span></a
+				<a href="#contact" class="btn-signal text-lg"
+					>Neem contact op <span aria-hidden="true">→</span></a
 				>
 				<p class="text-snow-dim">
 					Of bel me gewoon: <span class="font-semibold text-snow">{phone}</span>
@@ -319,7 +316,7 @@
 						></span>
 					{/each}
 				</span>
-				Nog {placesLeft} van {totalPlaces} stichtende plaatsen · Start maandag {nextStart}
+				Nog {placesLeft} van {totalPlaces} stichtende plaatsen
 			</p>
 		</div>
 		<div aria-hidden="true" class="relative hidden h-[24rem] self-center lg:block">
@@ -789,7 +786,9 @@
 			<p class="text-[0.8rem] font-semibold tracking-[0.2em] text-ink-dim uppercase">
 				Nieuw aanbod
 			</p>
-			<p class="display mt-2 text-3xl leading-tight">Daarom zoek ik 2 stichtende klanten.</p>
+			<p class="display mt-2 text-3xl leading-tight">
+				Daarom zoek ik {totalPlaces} stichtende klanten.
+			</p>
 			<p class="mt-6 text-lg leading-relaxed">
 				U betaalt <span class="display marker text-4xl">€4.750</span> per maand, de eerste 3 maanden.
 				In ruil publiceer ik uw project als case, met cijfers, en schrijft u een eerlijke review.
@@ -804,10 +803,10 @@
 				Nog {placesLeft} van {totalPlaces} plaatsen
 			</p>
 			<p class="mt-2 text-sm text-ink-dim">
-				Klant 3 tot 5 betaalt de eerste 3 maanden €7.125, vanaf klant 6 de volle prijs.
+				Klant {totalPlaces + 1} tot 5 betaalt de eerste 3 maanden €7.125, vanaf klant 6 de volle prijs.
 			</p>
-			<a href={bookingUrl} class="btn-signal mt-8"
-				>Plan een gesprek <span aria-hidden="true" class="ml-2">→</span></a
+			<a href="#contact" class="btn-signal mt-8"
+				>Neem contact op <span aria-hidden="true" class="ml-2">→</span></a
 			>
 		</aside>
 	</div>
@@ -956,13 +955,9 @@
 			Klaar om weer tijd te maken voor <span class="marker">uw zaak</span>?
 		</h2>
 		<p class="mt-6 max-w-2xl text-xl leading-relaxed text-ink-dim">
-			Dit is mijn eigen agenda. Kies een moment dat u past, en u spreekt mij. Geen verkoper, geen
-			verplichtingen.
+			Ik bel of mail u binnen één werkdag, zoals u verkiest. Of bel mij meteen zelf.
 		</p>
-		<Contact {bookingUrl} {phone} class="mt-12" />
-		<p class="mt-8 text-sm text-ink-dim">
-			Volgende start: maandag {nextStart}. Nog {placesLeft} van {totalPlaces} stichtende plaatsen.
-		</p>
+		<Contact {phone} class="mt-12" />
 	</div>
 </section>
 
@@ -972,9 +967,9 @@
 		? 'translate-y-0'
 		: 'translate-y-full'}"
 >
-	<a href={bookingUrl} class="btn-signal flex-1 justify-center py-3">Plan een gesprek</a>
+	<a href="#contact" class="btn-signal flex-1 justify-center py-3">Neem contact op</a>
 	<a
-		href="tel:{phone}"
+		href="tel:{phone.replace(/\s/g, '')}"
 		class="flex items-center rounded-full border border-night-line px-5 font-semibold text-snow"
 		>Bel</a
 	>

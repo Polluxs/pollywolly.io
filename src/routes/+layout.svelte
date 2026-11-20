@@ -1,6 +1,8 @@
 <script lang="ts">
 	import './layout.css';
 	import Logo from '$lib/Logo.svelte';
+	import { resolve } from '$app/paths';
+	import { phone } from '$lib/site';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
@@ -51,7 +53,10 @@
 				</p>
 			</div>
 			<div class="space-y-1 sm:text-right">
-				<p>[telefoonnummer] · [e-mail]</p>
+				<p>
+					<a href="tel:{phone.replace(/\s/g, '')}" class="hover:text-snow">{phone}</a> ·
+					<a href={resolve('/contact')} class="hover:text-snow">Contact</a>
+				</p>
 				<p>PollyWolly BV · Mol · BTW BE0797.231.914</p>
 			</div>
 		</div>

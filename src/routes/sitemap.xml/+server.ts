@@ -4,7 +4,7 @@ const DOMAIN = 'https://pollywolly.io';
 
 const pages = [
 	{ url: '/', changefreq: 'weekly', priority: '1.0' },
-	{ url: '/blog/facebook-killed-my-site', changefreq: 'monthly', priority: '0.9' }
+	{ url: '/contact', changefreq: 'monthly', priority: '0.8' }
 ];
 
 export const GET: RequestHandler = () => {

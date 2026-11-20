@@ -19,7 +19,7 @@ FROM node:24-alpine AS runtime
 WORKDIR /app
 
 ENV NODE_ENV=production
-# The only POST is a small JSON beacon, so cap request bodies well below the
+# The only POSTs are a small JSON beacon and the contact form, so cap request bodies well below the
 # adapter's 512K default.
 ENV BODY_SIZE_LIMIT=16K
 

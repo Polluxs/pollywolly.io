@@ -3,7 +3,7 @@
 	import { resolve } from '$app/paths';
 	import Logo from '$lib/Logo.svelte';
 	import Contact from '$lib/Contact.svelte';
-	import { bookingUrl, phone, nextStart } from '$lib/site';
+	import { phone } from '$lib/site';
 
 	// Landing page for the ads. The headline repeats the ad the visitor clicked,
 	// picked by utm_content (the ad's slug). Unknown or missing slugs fall back to the default.
@@ -38,7 +38,7 @@
 	});
 
 	const steps = [
-		['30 minuten, gratis', 'Via Google Meet of telefoon, op een moment dat u past.'],
+		['30 minuten, gratis', 'Telefonisch of per mail, zoals u verkiest. Binnen één werkdag.'],
 		['U vertelt wat vastloopt', 'Ik stel vragen en luister. Geen verkoper, geen verplichtingen.'],
 		[
 			'Daarna weet u waar u staat',
@@ -57,7 +57,7 @@
 </script>
 
 <svelte:head>
-	<title>Plan een gesprek | PollyWolly</title>
+	<title>Gratis gesprek | PollyWolly</title>
 	<meta
 		name="description"
 		content="Een gratis gesprek van 30 minuten over wat er bij u vastloopt. Daarna weet u of software op maat bij u past."
@@ -78,10 +78,10 @@
 					{headline.head} <span class="text-signal">{headline.mark}</span>{headline.tail ?? ''}
 				</h1>
 				<p class="mt-6 max-w-xl text-xl leading-relaxed text-snow-dim">
-					Daar gaat het gesprek over. Kies een moment, of laat uw nummer achter.
+					Daar gaat het gesprek over. Laat uw gegevens achter, ik neem contact op.
 				</p>
 				<a href="#contact" class="btn-signal mt-8 text-lg"
-					>Kies een moment <span aria-hidden="true">↓</span></a
+					>Neem contact op <span aria-hidden="true">↓</span></a
 				>
 			</div>
 			<ol class="grid gap-5 rounded-[1.25rem] border border-night-line p-7">
@@ -101,10 +101,8 @@
 
 <section id="contact" class="bg-paper-2 px-6 py-16 sm:py-20">
 	<div class="mx-auto max-w-6xl">
-		<Contact {bookingUrl} {phone} />
-		<p class="mt-8 text-sm text-ink-dim">
-			Volgende start: maandag {nextStart}. Maximaal 2 nieuwe projecten per maand.
-		</p>
+		<Contact {phone} />
+		<p class="mt-8 text-sm text-ink-dim">Maximaal 2 nieuwe projecten per maand.</p>
 	</div>
 </section>
 

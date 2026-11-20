@@ -42,8 +42,8 @@
 					<a href={resolve('/')} class="btn-signal text-lg"
 						>Naar de homepage <span aria-hidden="true">→</span></a
 					>
-					<a href={resolve('/gesprek')} class="font-semibold text-ink hover:underline"
-						>Of plan meteen een gesprek</a
+					<a href={resolve('/contact')} class="font-semibold text-ink hover:underline"
+						>Of neem contact op</a
 					>
 				</div>
 			</div>

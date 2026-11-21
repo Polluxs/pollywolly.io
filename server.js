@@ -14,6 +14,15 @@ const securityHeaders = {
 
 const server = createServer((req, res) => {
 	for (const [name, value] of Object.entries(securityHeaders)) res.setHeader(name, value);
+
+	// One host for search engines: www.pollywolly.io permanently redirects to the apex.
+	const host = (req.headers.host ?? '').toLowerCase();
+	if (host.startsWith('www.')) {
+		res.writeHead(301, { Location: `https://${host.slice(4)}${req.url ?? '/'}` });
+		res.end();
+		return;
+	}
+
 	handler(req, res, () => {
 		res.statusCode = 404;
 		res.end();

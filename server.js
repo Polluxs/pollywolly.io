@@ -4,7 +4,7 @@ import { createServer } from 'node:http';
 import { handler } from './build/handler.js';
 
 const securityHeaders = {
-	'Strict-Transport-Security': 'max-age=31536000',
+	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
 	'X-Content-Type-Options': 'nosniff',
 	'Referrer-Policy': 'strict-origin-when-cross-origin',
 	'X-Frame-Options': 'DENY',
@@ -21,6 +21,18 @@ const server = createServer((req, res) => {
 		res.writeHead(301, { Location: `https://${host.slice(4)}${req.url ?? '/'}` });
 		res.end();
 		return;
+	}
+
+	// Defaults the handler can still override (hashed assets under /_app/immutable and the
+	// sitemap set their own). Illustrations are not hashed: rename a file when its image changes.
+	if (req.method === 'GET' || req.method === 'HEAD') {
+		const path = (req.url ?? '/').split('?')[0];
+		res.setHeader(
+			'Cache-Control',
+			path.startsWith('/illustrations/')
+				? 'public, max-age=2592000'
+				: 'public, max-age=0, must-revalidate'
+		);
 	}
 
 	handler(req, res, () => {

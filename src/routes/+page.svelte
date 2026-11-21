@@ -250,7 +250,7 @@
 	<title>Software op maat voor KMO's in Vlaanderen | PollyWolly</title>
 	<meta
 		name="description"
-		content="Plannen, overtypen, nabellen, fouten herstellen: het eet uw dagen op. Op dag 30 neemt software op maat dat geregel over, en hebt u weer tijd voor uw zaak. Prijs vooraf, code van u."
+		content="Software op maat voor Vlaamse KMO's. Op dag 30 neemt ze het plannen, overtypen en nabellen over. Prijs vooraf, betalen als het werkt, code van u."
 	/>
 	<link rel="canonical" href="https://pollywolly.io/" />
 	<meta property="og:type" content="website" />
@@ -957,9 +957,9 @@
 		</h2>
 		<div class="mt-10 divide-y divide-line border-y border-line">
 			{#each faq as f}
-				<details class="group py-5">
+				<details class="group">
 					<summary
-						class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold"
+						class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold"
 					>
 						{f.q}
 						<span
@@ -967,7 +967,7 @@
 							aria-hidden="true">+</span
 						>
 					</summary>
-					<p class="mt-3 max-w-2xl leading-relaxed text-ink-dim">{f.a}</p>
+					<p class="-mt-2 max-w-2xl pb-5 leading-relaxed text-ink-dim">{f.a}</p>
 				</details>
 			{/each}
 		</div>

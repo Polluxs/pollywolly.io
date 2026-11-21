@@ -63,13 +63,26 @@
 		content="Een gratis gesprek van 30 minuten over wat er bij u vastloopt. Daarna weet u of software op maat bij u past."
 	/>
 	<meta name="robots" content="noindex" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://pollywolly.io/gesprek" />
+	<meta property="og:title" content="Gratis gesprek | PollyWolly" />
+	<meta
+		property="og:description"
+		content="Een gratis gesprek van 30 minuten over wat er bij u vastloopt. Daarna weet u of software op maat bij u past."
+	/>
+	<meta property="og:image" content="https://pollywolly.io/og.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:locale" content="nl_BE" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://pollywolly.io/og.jpg" />
 </svelte:head>
 
 <section class="bg-night px-6 pt-8 pb-14 text-snow sm:pb-16">
 	<div class="mx-auto max-w-6xl">
 		<a
 			href={resolve('/')}
-			class="inline-block text-xl text-snow"
+			class="-my-1 inline-block py-1 text-xl text-snow"
 			aria-label="PollyWolly, naar de homepage"><Logo /></a
 		>
 		<div class="mt-12 grid items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
@@ -116,7 +129,9 @@
 				</div>
 			{/each}
 		</dl>
-		<a href={resolve('/')} class="mt-12 inline-block font-semibold text-ink hover:underline"
+		<a
+			href={resolve('/')}
+			class="mt-9 -mb-3 inline-block py-3 font-semibold text-ink hover:underline"
 			>Eerst meer lezen over hoe ik werk <span aria-hidden="true">→</span></a
 		>
 	</div>

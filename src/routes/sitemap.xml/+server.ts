@@ -2,10 +2,12 @@ import type { RequestHandler } from './$types';
 
 const DOMAIN = 'https://pollywolly.io';
 
+// Indexable pages only: /gesprek and /cases/* are noindex on purpose.
+// lastmod is kept by hand (the Docker build has no git). Change it only when the page content changes.
 const pages = [
-	{ url: '/', changefreq: 'weekly', priority: '1.0' },
-	{ url: '/contact', changefreq: 'monthly', priority: '0.8' },
-	{ url: '/privacy', changefreq: 'yearly', priority: '0.2' }
+	{ url: '/', lastmod: '2026-11-21' },
+	{ url: '/contact', lastmod: '2026-11-21' },
+	{ url: '/privacy', lastmod: '2026-11-21' }
 ];
 
 export const GET: RequestHandler = () => {
@@ -13,8 +15,7 @@ export const GET: RequestHandler = () => {
 		(p) => `
 	<url>
 		<loc>${DOMAIN}${p.url}</loc>
-		<changefreq>${p.changefreq}</changefreq>
-		<priority>${p.priority}</priority>
+		<lastmod>${p.lastmod}</lastmod>
 	</url>`
 	);
 

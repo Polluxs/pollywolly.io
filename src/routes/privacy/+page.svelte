@@ -14,13 +14,26 @@
 		content="Welke persoonsgegevens PollyWolly BV verwerkt via pollywolly.io, voor welke doeleinden, hoe lang ze bewaard worden en welke rechten u hebt."
 	/>
 	<link rel="canonical" href="https://pollywolly.io/privacy" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://pollywolly.io/privacy" />
+	<meta property="og:title" content="Privacyverklaring | PollyWolly" />
+	<meta
+		property="og:description"
+		content="Welke persoonsgegevens PollyWolly BV verwerkt via pollywolly.io, voor welke doeleinden, hoe lang ze bewaard worden en welke rechten u hebt."
+	/>
+	<meta property="og:image" content="https://pollywolly.io/og.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:locale" content="nl_BE" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://pollywolly.io/og.jpg" />
 </svelte:head>
 
 <section class="bg-ink px-6 pt-8 pb-16 text-snow sm:pb-20">
 	<div class="mx-auto max-w-6xl">
 		<a
 			href={resolve('/')}
-			class="inline-block text-xl text-snow"
+			class="-my-1 inline-block py-1 text-xl text-snow"
 			aria-label="PollyWolly, naar de homepage"><Logo /></a
 		>
 		<h1 class="display mt-12 text-[clamp(2.25rem,4.4vw,3.75rem)] text-balance">
@@ -160,6 +173,9 @@
 		font-weight: 800;
 		line-height: 1.2;
 		color: var(--color-ink);
+		/* "Verwerkingsverantwoordelijke" is wider than a phone screen */
+		hyphens: auto;
+		overflow-wrap: break-word;
 	}
 	.prose-privacy :global(h3) {
 		margin-top: 1.5rem;

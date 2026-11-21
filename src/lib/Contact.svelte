@@ -161,7 +161,9 @@
 			>
 			<p class="mt-4 text-sm text-ink-dim">
 				Ik gebruik uw gegevens alleen om u te contacteren.
-				<a href={resolve('/privacy')} class="underline underline-offset-2">Meer over privacy</a>
+				<a href={resolve('/privacy')} class="-my-3 inline-block py-3 underline underline-offset-2"
+					>Meer over privacy</a
+				>
 			</p>
 		{/if}
 	</form>
@@ -171,7 +173,8 @@
 		</p>
 		<a
 			href="tel:{phone.replace(/\s/g, '')}"
-			class="display mt-3 inline-block text-3xl text-snow hover:text-signal sm:text-4xl">{phone}</a
+			class="display mt-1.5 -mb-1.5 inline-block py-1.5 text-3xl text-snow hover:text-signal sm:text-4xl"
+			>{phone}</a
 		>
 		<p class="mt-3 text-lg text-snow-dim">Ik neem op als ik kan, anders bel ik terug.</p>
 		<p class="mt-auto border-t border-night-line pt-8 text-snow-dim">

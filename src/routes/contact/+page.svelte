@@ -27,6 +27,19 @@
 		content="Vertel wat er bij u vastloopt. Ik bel of mail u binnen één werkdag. Gratis, geen verplichtingen."
 	/>
 	<link rel="canonical" href="https://pollywolly.io/contact" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://pollywolly.io/contact" />
+	<meta property="og:title" content="Contact | PollyWolly" />
+	<meta
+		property="og:description"
+		content="Vertel wat er bij u vastloopt. Ik bel of mail u binnen één werkdag. Gratis, geen verplichtingen."
+	/>
+	<meta property="og:image" content="https://pollywolly.io/og.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:locale" content="nl_BE" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://pollywolly.io/og.jpg" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static JSON-LD, `<` escaped -->
 	{@html jsonLd(contactSchema)}
 </svelte:head>
@@ -35,7 +48,7 @@
 	<div class="mx-auto max-w-6xl">
 		<a
 			href={resolve('/')}
-			class="inline-block text-xl text-snow"
+			class="-my-1 inline-block py-1 text-xl text-snow"
 			aria-label="PollyWolly, naar de homepage"><Logo /></a
 		>
 		<h1 class="display mt-12 text-[clamp(2.25rem,4.4vw,3.75rem)] text-balance">

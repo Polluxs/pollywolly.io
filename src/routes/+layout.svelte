@@ -7,6 +7,8 @@
 	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
 	import { jsonLd, siteSchema } from '$lib/schema';
+	import displayFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-opsz-normal.woff2?url';
+	import bodyFont from '@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2?url';
 
 	let { children } = $props();
 
@@ -29,12 +31,9 @@
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<meta name="theme-color" content="#0e1117" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500;700&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-		rel="stylesheet"
-	/>
+	<!-- The two fonts above the fold; the rest load on demand. -->
+	<link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin="anonymous" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static JSON-LD from $lib/schema, `<` escaped -->
 	{@html jsonLd(siteSchema)}
 </svelte:head>
@@ -57,8 +56,11 @@
 			</div>
 			<div class="space-y-1 sm:text-right">
 				<p>
-					<a href="tel:{phone.replace(/\s/g, '')}" class="hover:text-snow">{phone}</a> ·
-					<a href={resolve('/contact')} class="hover:text-snow">Contact</a>
+					<a href="tel:{phone.replace(/\s/g, '')}" class="-my-3 inline-block py-3 hover:text-snow"
+						>{phone}</a
+					>
+					·
+					<a href={resolve('/contact')} class="-my-3 inline-block py-3 hover:text-snow">Contact</a>
 				</p>
 				<p>PollyWolly BV · Mol · BTW BE0797.231.914</p>
 			</div>

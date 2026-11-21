@@ -424,7 +424,7 @@
 		<div class="mt-16 grid items-center gap-8 md:grid-cols-[1fr_1.1fr]">
 			<img
 				src="/illustrations/overrompeld.webp"
-				alt=""
+				alt="Een ondernemer bedolven onder agenda's, mails, chats en spreadsheets"
 				width="800"
 				height="821"
 				loading="lazy"
@@ -450,7 +450,7 @@
 		<div class="mt-14 grid items-center gap-10 md:grid-cols-[1.3fr_1fr]">
 			<img
 				src="/illustrations/wielen-zoeken.webp"
-				alt=""
+				alt="Een ondernemer tuurt zoekend in een machine vol tandwielen"
 				width="1000"
 				height="679"
 				loading="lazy"
@@ -498,7 +498,7 @@
 			</div>
 			<img
 				src="/illustrations/wielen-gevonden.webp"
-				alt=""
+				alt="Een ondernemer draait aan één geel tandwiel en de hele machine draait mee"
 				width="1000"
 				height="674"
 				loading="lazy"
@@ -595,7 +595,7 @@
 					src="/illustrations/opgelucht.webp"
 					srcset="/illustrations/opgelucht-480.webp 480w, /illustrations/opgelucht.webp 900w"
 					sizes="(min-width: 640px) 240px, 208px"
-					alt=""
+					alt="Een ondernemer leunt ontspannen achterover met een koffie, op de laptop een groen vinkje"
 					width="900"
 					height="620"
 					loading="lazy"

@@ -134,7 +134,7 @@
 					{#each messageChips as chip (chip)}
 						<button
 							type="button"
-							class="rounded-full border border-line bg-paper px-3 py-1.5 text-sm font-normal hover:border-ink"
+							class="min-h-11 rounded-full border border-line bg-paper px-3 py-1.5 text-sm font-normal hover:border-ink"
 							onclick={() => (message = chip)}>{chip}</button
 						>
 					{/each}

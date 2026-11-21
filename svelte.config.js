@@ -6,7 +6,9 @@ const config = {
 		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		// Inline the stylesheet into the HTML: one round trip less before the first paint.
+		inlineStyleThreshold: 64 * 1024
 	}
 };
 

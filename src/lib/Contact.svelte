@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { trackEvent } from '$lib/umami';
 
@@ -158,6 +159,10 @@
 				disabled={status === 'sending'}
 				>{status === 'sending' ? 'Even geduld...' : 'Verstuur'}</button
 			>
+			<p class="mt-4 text-sm text-ink-dim">
+				Ik gebruik uw gegevens alleen om u te contacteren.
+				<a href={resolve('/privacy')} class="underline underline-offset-2">Meer over privacy</a>
+			</p>
 		{/if}
 	</form>
 	<div class="flex flex-col rounded-[1.25rem] bg-ink p-8 text-snow sm:p-10">

@@ -61,6 +61,8 @@
 					>
 					·
 					<a href={resolve('/contact')} class="-my-3 inline-block py-3 hover:text-snow">Contact</a>
+					·
+					<a href={resolve('/privacy')} class="-my-3 inline-block py-3 hover:text-snow">Privacy</a>
 				</p>
 				<p>PollyWolly BV · Mol · BTW BE0797.231.914</p>
 			</div>

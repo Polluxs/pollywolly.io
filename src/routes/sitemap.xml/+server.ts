@@ -4,7 +4,8 @@ const DOMAIN = 'https://pollywolly.io';
 
 const pages = [
 	{ url: '/', changefreq: 'weekly', priority: '1.0' },
-	{ url: '/contact', changefreq: 'monthly', priority: '0.8' }
+	{ url: '/contact', changefreq: 'monthly', priority: '0.8' },
+	{ url: '/privacy', changefreq: 'yearly', priority: '0.2' }
 ];
 
 export const GET: RequestHandler = () => {

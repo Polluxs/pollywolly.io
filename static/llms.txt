@@ -10,8 +10,9 @@
 ## Feiten
 
 - Bedrijf: PollyWolly BV, Mol, btw BE0797.231.914
-- Prijs: de eerste werkende versie kost €9.500 excl. btw. Niets vooraf: u betaalt pas wanneer de afgesproken versie werkt
-- Geen abonnement: na dag 30 kiest de klant per knelpunt of het verder gaat (€9.500 per maand)
+- Prijs: €9.500 per maand excl. btw; in elke maand wordt één knelpunt opgelost. Niets vooraf: de klant betaalt pas wanneer de afgesproken versie werkt
+- Geen abonnement: na elke maand kiest de klant of het verder gaat
+- Stichtende klanten (3 plaatsen) betalen hun eerste 3 maanden de helft, €4.750 per maand; stoppen ze eerder, dan betalen ze enkel de gebouwde maanden
 - Na het gratis gesprek krijgt de klant een prijsvork voor het eigen project
 - Data en code van elke aanvaarde versie zijn van de klant, met documentatie
 - Webtoepassingen voor computer, tablet en telefoon, geen apps voor de App Store

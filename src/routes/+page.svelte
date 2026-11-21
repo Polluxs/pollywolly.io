@@ -181,7 +181,7 @@
 	const faq = [
 		{
 			q: 'Wat kost software op maat?',
-			a: 'De eerste werkende versie kost €9.500, stichtende klanten betalen de eerste 3 maanden €4.750 per maand. Na het gratis gesprek krijgt u een prijsvork voor uw eigen project.'
+			a: 'Een maand bouwen kost €9.500 excl. btw, en in die maand lossen we één knelpunt op. U betaalt pas wanneer het werkt, en na elke maand kiest u of we verder gaan. Stichtende klanten betalen hun eerste 3 maanden de helft. Na het gratis gesprek krijgt u een prijsvork voor uw eigen project.'
 		},
 		{
 			q: 'Hoe lang duurt het?',
@@ -774,14 +774,20 @@
 				</div>
 				<div class="flex items-baseline justify-between py-4">
 					<dt class="display text-2xl">Uw prijs</dt>
-					<dd class="display text-3xl">€9.500</dd>
+					<dd class="text-right">
+						<span class="display text-3xl">€9.500</span>
+						<span class="block text-sm text-ink-dim">per maand, excl. btw</span>
+					</dd>
 				</div>
 			</dl>
 			<ul class="mt-4 space-y-0.5 text-[0.8rem] leading-snug text-ink-dim">
-				<li><strong class="text-ink">Niets vooraf:</strong> u betaalt pas wanneer het werkt.</li>
 				<li>
-					<strong class="text-ink">Geen abonnement:</strong> na dag 30 kiest u per knelpunt of we verder
-					gaan (€9.500/maand).
+					<strong class="text-ink">Eén maand, één knelpunt.</strong> Niets vooraf: u betaalt pas wanneer
+					het werkt.
+				</li>
+				<li>
+					<strong class="text-ink">Geen abonnement:</strong> na elke maand kiest u of we aan een volgend
+					knelpunt beginnen.
 				</li>
 				<li>
 					<strong class="text-ink">Stopt de ontwikkeling,</strong> dan blijft alleen de beheerde cloud
@@ -804,7 +810,8 @@
 				Daarom zoek ik {totalPlaces} stichtende klanten.
 			</p>
 			<p class="mt-6 text-lg leading-relaxed">
-				U betaalt <span class="display marker text-4xl">€4.750</span> per maand, de eerste 3 maanden.
+				U betaalt de helft: <span class="display marker text-4xl">€4.750</span> in plaats van €9.500 per
+				maand, voor uw eerste 3 maanden. Stopt u eerder, dan betaalt u enkel de maanden die gebouwd zijn.
 				In ruil publiceer ik uw project als case, met cijfers, en schrijft u een eerlijke review.
 			</p>
 			<p class="mt-6 flex items-center gap-3 font-semibold">
@@ -817,7 +824,8 @@
 				Nog {placesLeft} van {totalPlaces} plaatsen
 			</p>
 			<p class="mt-2 text-sm text-ink-dim">
-				Klant {totalPlaces + 1} tot 5 betaalt de eerste 3 maanden €7.125, vanaf klant 6 de volle prijs.
+				Klant {totalPlaces + 1} en 5 betalen €7.125 per maand voor hun eerste 3 maanden, vanaf klant 6
+				de volle €9.500.
 			</p>
 			<a href="#contact" class="btn-signal mt-8"
 				>Neem contact op <span aria-hidden="true" class="ml-2">→</span></a

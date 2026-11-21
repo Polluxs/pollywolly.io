@@ -23,6 +23,9 @@ export const siteSchema = {
 			address: { '@type': 'PostalAddress', addressLocality: 'Mol', addressCountry: 'BE' },
 			areaServed: { '@type': 'AdministrativeArea', name: 'Vlaanderen' },
 			knowsLanguage: 'nl-BE',
+			// Google Business Profile
+			hasMap: 'https://maps.google.com/?cid=10840079035858319901',
+			sameAs: ['https://maps.google.com/?cid=10840079035858319901'],
 			founder: { '@id': `${SITE}/#thomas-dorissen` },
 			contactPoint: {
 				'@type': 'ContactPoint',

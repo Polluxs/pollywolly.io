@@ -247,7 +247,7 @@
 </script>
 
 <svelte:head>
-	<title>Software op maat voor KMO's | Weer tijd voor uw zaak | PollyWolly</title>
+	<title>Software op maat voor KMO's in Vlaanderen | PollyWolly</title>
 	<meta
 		name="description"
 		content="Plannen, overtypen, nabellen, fouten herstellen: het eet uw dagen op. Op dag 30 neemt software op maat dat geregel over, en hebt u weer tijd voor uw zaak. Prijs vooraf, code van u."
@@ -944,7 +944,9 @@
 <!-- FAQ -->
 <section class="px-6 py-24">
 	<div class="mx-auto max-w-3xl">
-		<h2 class="display text-4xl text-balance sm:text-5xl">Wat mensen mij eerst vragen</h2>
+		<h2 class="display text-4xl text-balance sm:text-5xl">
+			Wat ondernemers mij eerst vragen over software op maat
+		</h2>
 		<div class="mt-10 divide-y divide-line border-y border-line">
 			{#each faq as f}
 				<details class="group py-5">

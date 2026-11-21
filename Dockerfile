@@ -27,4 +27,6 @@ COPY --from=builder /app/build ./build
 
 USER node
 
-CMD ["node", "--max-old-space-size=128", "--max-semi-space-size=2", "build"]
+COPY server.js ./
+
+CMD ["node", "--max-old-space-size=128", "--max-semi-space-size=2", "server.js"]

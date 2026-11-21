@@ -3,6 +3,18 @@
 	import Logo from '$lib/Logo.svelte';
 	import Contact from '$lib/Contact.svelte';
 	import { phone } from '$lib/site';
+	import { SITE, jsonLd } from '$lib/schema';
+
+	const contactSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'ContactPage',
+		'@id': `${SITE}/contact#webpage`,
+		url: `${SITE}/contact`,
+		name: 'Contact | PollyWolly',
+		inLanguage: 'nl-BE',
+		isPartOf: { '@id': `${SITE}/#website` },
+		about: { '@id': `${SITE}/#organization` }
+	};
 
 	// `form` is only set after a submit without JavaScript; Contact shows the outcome.
 	let { form } = $props();
@@ -15,6 +27,8 @@
 		content="Vertel wat er bij u vastloopt. Ik bel of mail u binnen één werkdag. Gratis, geen verplichtingen."
 	/>
 	<link rel="canonical" href="https://pollywolly.io/contact" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static JSON-LD, `<` escaped -->
+	{@html jsonLd(contactSchema)}
 </svelte:head>
 
 <section class="bg-ink px-6 pt-8 pb-16 text-snow sm:pb-20">

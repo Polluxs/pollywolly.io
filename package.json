@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"start": "MALLOC_ARENA_MAX=2 BODY_SIZE_LIMIT=16K node --max-old-space-size=128 --max-semi-space-size=2 build",
+		"start": "MALLOC_ARENA_MAX=2 BODY_SIZE_LIMIT=16K node --max-old-space-size=128 --max-semi-space-size=2 server.js",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

@@ -73,6 +73,8 @@
 			<h3 class="display text-3xl sm:text-4xl">Neem contact op</h3>
 			<img
 				src="/illustrations/koffie.webp"
+				srcset="/illustrations/koffie-320.webp 320w, /illustrations/koffie.webp 640w"
+				sizes="(min-width: 640px) 112px, 96px"
 				alt=""
 				width="320"
 				height="320"

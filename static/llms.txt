@@ -1,0 +1,17 @@
+# PollyWolly
+
+> PollyWolly BV (Mol, België) bouwt software op maat voor ondernemers van Vlaamse KMO's. Eerste werkende versie op dag 30, prijs vooraf, data en code zijn van de klant. Eigenaar: Thomas Dorissen.
+
+## Pagina's
+
+- [Homepage](https://pollywolly.io/): het aanbod, de werkwijze (gratis gesprek, samen het knelpunt kiezen, 4 weken bouwen met elke vrijdag een demo, op dag 30 werkt het), voorbeelden van wat in 30 dagen past (planningsbord, offerte en opvolging, klantportaal), de prijs, de garanties en veelgestelde vragen
+- [Contact](https://pollywolly.io/contact): contactformulier, antwoord binnen één werkdag, telefoon +32 489 02 01 99
+
+## Feiten
+
+- Bedrijf: PollyWolly BV, Mol, btw BE0797.231.914
+- Prijs: de eerste werkende versie kost €9.500 excl. btw. Niets vooraf: u betaalt pas wanneer de afgesproken versie werkt
+- Geen abonnement: na dag 30 kiest de klant per knelpunt of het verder gaat (€9.500 per maand)
+- Na het gratis gesprek krijgt de klant een prijsvork voor het eigen project
+- Data en code van elke aanvaarde versie zijn van de klant, met documentatie
+- Webtoepassingen voor computer, tablet en telefoon, geen apps voor de App Store

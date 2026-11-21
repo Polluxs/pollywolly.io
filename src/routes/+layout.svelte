@@ -6,6 +6,7 @@
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
+	import { jsonLd, siteSchema } from '$lib/schema';
 
 	let { children } = $props();
 
@@ -34,6 +35,8 @@
 		href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500;700&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
 		rel="stylesheet"
 	/>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static JSON-LD from $lib/schema, `<` escaped -->
+	{@html jsonLd(siteSchema)}
 </svelte:head>
 
 <div class="min-h-screen">

@@ -252,9 +252,9 @@
 		name="description"
 		content="Plannen, overtypen, nabellen, fouten herstellen: het eet uw dagen op. Op dag 30 neemt software op maat dat geregel over, en hebt u weer tijd voor uw zaak. Prijs vooraf, code van u."
 	/>
-	<link rel="canonical" href="https://pollywolly.io" />
+	<link rel="canonical" href="https://pollywolly.io/" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://pollywolly.io" />
+	<meta property="og:url" content="https://pollywolly.io/" />
 	<meta
 		property="og:title"
 		content="Komt u als ondernemer nog toe aan het werk waarvoor u juist nodig bent?"
@@ -350,6 +350,8 @@
 			<div class="relative flex items-center rounded-[1.25rem] bg-ink p-7 pr-28 text-snow sm:pr-32">
 				<img
 					src="/illustrations/verward.webp"
+					srcset="/illustrations/verward-320.webp 320w, /illustrations/verward.webp 460w"
+					sizes="(min-width: 640px) 144px, 128px"
 					alt=""
 					width="460"
 					height="900"
@@ -380,6 +382,8 @@
 					<h3 class="display text-2xl">Iemand extra aanwerven</h3>
 					<img
 						src="/illustrations/aanwerven.webp"
+						srcset="/illustrations/aanwerven-320.webp 320w, /illustrations/aanwerven.webp 636w"
+						sizes="80px"
 						alt=""
 						width="636"
 						height="640"
@@ -401,6 +405,8 @@
 					<h3 class="display text-2xl">Meer tools en software</h3>
 					<img
 						src="/illustrations/vorm-past-niet.webp"
+						srcset="/illustrations/vorm-past-niet-320.webp 320w, /illustrations/vorm-past-niet.webp 640w"
+						sizes="96px"
 						alt=""
 						width="640"
 						height="546"
@@ -532,6 +538,8 @@
 					{#if key}
 						<img
 							src="/illustrations/kalender.webp"
+							srcset="/illustrations/kalender-320.webp 320w, /illustrations/kalender.webp 640w"
+							sizes="80px"
 							alt=""
 							width="320"
 							height="320"
@@ -585,9 +593,11 @@
 			<div class="lg:-mt-40">
 				<img
 					src="/illustrations/opgelucht.webp"
+					srcset="/illustrations/opgelucht-480.webp 480w, /illustrations/opgelucht.webp 900w"
+					sizes="(min-width: 640px) 240px, 208px"
 					alt=""
 					width="900"
-					height="600"
+					height="620"
 					loading="lazy"
 					class="ml-auto block w-52 sm:w-60"
 				/>
@@ -692,6 +702,8 @@
 							<th class="py-2 pr-4 align-bottom font-semibold">
 								<img
 									src="/illustrations/vorm-past-niet.webp"
+									srcset="/illustrations/vorm-past-niet-320.webp 320w, /illustrations/vorm-past-niet.webp 640w"
+									sizes="96px"
 									alt=""
 									width="640"
 									height="546"
@@ -703,6 +715,8 @@
 							<th class="py-2 align-bottom font-semibold text-ink">
 								<img
 									src="/illustrations/vorm-past-wel.webp"
+									srcset="/illustrations/vorm-past-wel-320.webp 320w, /illustrations/vorm-past-wel.webp 640w"
+									sizes="96px"
 									alt=""
 									width="640"
 									height="546"
@@ -826,6 +840,8 @@
 				<article class="card p-7 md:row-span-3 md:grid md:grid-rows-subgrid md:gap-0">
 					<img
 						src="/illustrations/{g.img}.webp"
+						srcset="/illustrations/{g.img}-320.webp 320w, /illustrations/{g.img}.webp 640w"
+						sizes="96px"
 						alt=""
 						width="320"
 						height="320"
